@@ -1,0 +1,1669 @@
+connect mobaxterm for windows version:
+--------------------------------------
+ssh -i <location of PEM> <username>@<ip>
+ssh -i jmspem.pem ec2-user@
+
+Apache server log github:
+-------------------------
+https://gist.github.com/rm-hull/bd60aed44024e9986e3c
+
+abc 5
+abcd 6
+abcdef 8
+dcd 7
+affd 9
+
+5. Devops_Linux_realtime_log_trobuleshoot:
+==========================================
+[ec2-user@ip-172-31-10-164 ~]$ history
+    1  clear
+    2  ls -ltr
+    3  pwd
+    4  du
+    5  free
+    6  top
+    7  df
+    8  netstat
+    9  telnet
+   10  yum install telnet
+   11  sudo yum install telnet
+   12  telnet
+   13  w
+   14  fdisk
+   15  wc
+   16  uptime
+   17  man
+   18  lostat
+   19  iostat
+   20  vmstat
+   21  pwd
+   22  sudo -i
+   23  mkdir devops
+   24  ls
+   25  ls -l
+   26  man ls
+   27  whatis cp
+   28  whatis ls
+   29  whatis netsata
+   30  whatis netstat
+   31  cd devops/
+   32  ls
+   33  ls -ltr
+   34  mkdir course
+   35  cd cor
+   36  cd course/
+   37  pwd
+   38  mkdir -p madhucourse/linux
+   39  ls -ltr
+   40  cd madhucourse/
+   41  ls
+   42  cd ..
+   43  cd madhucourse/linux/
+   44  cd
+   45  cd -
+   46  cd ../..
+   47  pwd
+   48  cd
+   49  cd devops/
+   50  ls
+   51  touch sample.txt
+   52  ll
+   53  vi example.txt
+   54  ll
+   55  vi example.txt
+   56  ls -li
+   57  echo --> test1.txt
+   58  ls -ltr
+   59  echo "this is devops course"
+   60  echo $USER
+   61  env
+   62  env | grep -i user\
+   63  env | grep -i user
+   64  env | grep -i USER
+   65  env | grep USER
+   66  vi sample.txt
+   67  cat sample.txt
+   68  cat sample.txt | grep devops
+   69  cat sample.txt | grep -i devops
+   70  ifconfig
+   71  hostname
+   72  vi hostname
+   73  ifconfig | grep inet
+   74  ifconfig | grep -w inet
+   75  ifconfig | grep -w inet | awk 2
+   76  ifconfig | grep -w inet | awk '{print $1}'
+   77  ifconfig | grep -w inet | awk '{print $2}'
+   78  ifconfig | grep -w inet | awk '{print $3}'
+   79  ifconfig | grep -w inet | awk '{print $2}'
+   80  ifconfig | grep -w inet | awk '{print $2}' |wc
+   81  ifconfig | grep -w inet | awk '{print $2}' | wc -l
+   82  ifconfig | grep -w inet | awk '{print $2}' | wc -c
+   83  ifconfig | grep -w inet | awk '{print $2}' | wc -w
+   84  history
+   85  ifconfig
+   86  ifconfig | grep -i inet
+   87  ifconfig | grep -i inet | awk '{print 2}'
+   88  ifconfig | grep -i inet | awk '{print $2}'
+   89  ifconfig | grep -w inet | awk '{print $2}'
+   90  vi access.log
+   91  cat access.log
+   92  cat access.log | grep -i GET
+   93  cat access.log | grep -i GET | awk '{print $1}'
+   94  cat access.log | grep -w GET | awk '{print $1}'
+   95  cat access.log | grep -i GET | awk '{print $1}'
+   96  cat access.log | grep -i GET | awk '{print $1}' | unique
+   97  cat access.log | grep -i GET | awk '{print $1}' | uniqu
+   98  cat access.log | grep -i GET | awk '{print $1}' | uniq
+   99  cat access.log | grep -i GET | awk '{print $1}' | uniq -u
+  100  cat access.log | grep -i GET | awk '{print $1}' | uniq -d
+  101  cat access.log | grep -i GET | awk '{print $1}' | uniq -u
+  102  cat access.log | grep -i GET | awk '{print $1}' | uniq -c
+  103  cat access.log | grep -i GET | awk '{print $1}' | sort | uniq -c
+  104  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort
+  105  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort -r
+  106  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort
+  107  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -u | sort -r
+  108  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -u | sort
+  109  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  110  cat access.log | grep -i GET | awk '{print $1}' | sort -o | uniq -c | sort -r
+  111  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  112  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -0
+  113  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  114  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort
+  115  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -v
+  116  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -V
+  117  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -n -r
+  118  cat access.log | grep -i GET | awk -
+  119  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}'
+  120  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  121  cat access.log | grep -i GET POST| awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  122  cat access.log | grep -i GET,POST| awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  123  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  124  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}' | sort -r | uniq -c | sort -n -r
+  125  cat access.log | grep -i POST | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}' | sort -r | uniq -c | sort -n -r
+  126  vi sum.txt
+  127  cat sum.txt | grep abc
+  128  cat sum.txt | grep abc | awk '{SUM+=$2}END{print SUM}'
+  129  cat access.log | grep error
+  130  history
+
+6. Devops_Linux_Commands:
+=========================
+File Permissions:
+-----------------
+-rw-r--r--
+-rw-    r--     r--
+User - Group - Others
+
+r --> read --> 4
+w --> write --> 2
+x --> executable --> 1
+  --> nothing --> 0
+  
+umask default value --> 022
+
+Default file permission --> 644
+Default Directory/folder permission --> 755
+
+umask value is used to reduce the permission
+chmod is providing the permission
+
+255 character leght
+
+255 bytes
+On Linux: The maximum length for a file name is 255 bytes. 
+The maximum combined length of both the file name and path name is 4096 bytes.
+
+How make it file immutable permanently?
+========================================
+sudo chattr +i /backups/passwd
+
+sudo chattr +i sample.txt
+
+How make it file mutable permanently?:
+========================================
+sudo chattr -i sample.txt
+
+Install process:
+----------------
+sudo apt install packagename -y
+sudo yum install pakcagename -yum
+
+yum --> centos, ami linux, redhat
+apt, apt-get --> ubuntu
+pip install --> python
+npm --> nodejs
+apk add --> alpine
+
+CTRL+A to come first
+
+check a service is running or not:
+----------------------------------
+systemctl status httpd
+
+service httpd status
+
+Q) How to check listen port in system
+Ans) [ec2-user@ip-172-31-10-164 ~]$ netstat
+[ec2-user@ip-172-31-10-164 ~]$ netstat -nlpt
+
+[ec2-user@ip-172-31-10-164 ~]$ history
+    1  clear
+    2  ls -ltr
+    3  pwd
+    4  du
+    5  free
+    6  top
+    7  df
+    8  netstat
+    9  telnet
+   10  yum install telnet
+   11  sudo yum install telnet
+   12  telnet
+   13  w
+   14  fdisk
+   15  wc
+   16  uptime
+   17  man
+   18  lostat
+   19  iostat
+   20  vmstat
+   21  pwd
+   22  sudo -i
+   23  mkdir devops
+   24  ls
+   25  ls -l
+   26  man ls
+   27  whatis cp
+   28  whatis ls
+   29  whatis netsata
+   30  whatis netstat
+   31  cd devops/
+   32  ls
+   33  ls -ltr
+   34  mkdir course
+   35  cd cor
+   36  cd course/
+   37  pwd
+   38  mkdir -p madhucourse/linux
+   39  ls -ltr
+   40  cd madhucourse/
+   41  ls
+   42  cd ..
+   43  cd madhucourse/linux/
+   44  cd
+   45  cd -
+   46  cd ../..
+   47  pwd
+   48  cd
+   49  cd devops/
+   50  ls
+   51  touch sample.txt
+   52  ll
+   53  vi example.txt
+   54  ll
+   55  vi example.txt
+   56  ls -li
+   57  echo --> test1.txt
+   58  ls -ltr
+   59  echo "this is devops course"
+   60  echo $USER
+   61  env
+   62  env | grep -i user\
+   63  env | grep -i user
+   64  env | grep -i USER
+   65  env | grep USER
+   66  vi sample.txt
+   67  cat sample.txt
+   68  cat sample.txt | grep devops
+   69  cat sample.txt | grep -i devops
+   70  ifconfig
+   71  hostname
+   72  vi hostname
+   73  ifconfig | grep inet
+   74  ifconfig | grep -w inet
+   75  ifconfig | grep -w inet | awk 2
+   76  ifconfig | grep -w inet | awk '{print $1}'
+   77  ifconfig | grep -w inet | awk '{print $2}'
+   78  ifconfig | grep -w inet | awk '{print $3}'
+   79  ifconfig | grep -w inet | awk '{print $2}'
+   80  ifconfig | grep -w inet | awk '{print $2}' |wc
+   81  ifconfig | grep -w inet | awk '{print $2}' | wc -l
+   82  ifconfig | grep -w inet | awk '{print $2}' | wc -c
+   83  ifconfig | grep -w inet | awk '{print $2}' | wc -w
+   84  history
+   85  ifconfig
+   86  ifconfig | grep -i inet
+   87  ifconfig | grep -i inet | awk '{print 2}'
+   88  ifconfig | grep -i inet | awk '{print $2}'
+   89  ifconfig | grep -w inet | awk '{print $2}'
+   90  vi access.log
+   91  cat access.log
+   92  cat access.log | grep -i GET
+   93  cat access.log | grep -i GET | awk '{print $1}'
+   94  cat access.log | grep -w GET | awk '{print $1}'
+   95  cat access.log | grep -i GET | awk '{print $1}'
+   96  cat access.log | grep -i GET | awk '{print $1}' | unique
+   97  cat access.log | grep -i GET | awk '{print $1}' | uniqu
+   98  cat access.log | grep -i GET | awk '{print $1}' | uniq
+   99  cat access.log | grep -i GET | awk '{print $1}' | uniq -u
+  100  cat access.log | grep -i GET | awk '{print $1}' | uniq -d
+  101  cat access.log | grep -i GET | awk '{print $1}' | uniq -u
+  102  cat access.log | grep -i GET | awk '{print $1}' | uniq -c
+  103  cat access.log | grep -i GET | awk '{print $1}' | sort | uniq -c
+  104  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort
+  105  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort -r
+  106  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort
+  107  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -u | sort -r
+  108  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -u | sort
+  109  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  110  cat access.log | grep -i GET | awk '{print $1}' | sort -o | uniq -c | sort -r
+  111  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  112  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -0
+  113  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -r
+  114  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort
+  115  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -v
+  116  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -V
+  117  cat access.log | grep -i GET | awk '{print $1}' | sort -r | uniq -c | sort -n -r
+  118  cat access.log | grep -i GET | awk -
+  119  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}'
+  120  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  121  cat access.log | grep -i GET POST| awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  122  cat access.log | grep -i GET,POST| awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  123  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  124  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}' | sort -r | uniq -c | sort -n -r
+  125  cat access.log | grep -i POST | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}' | sort -r | uniq -c | sort -n -r
+  126  vi sum.txt
+  127  cat sum.txt | grep abc
+  128  cat sum.txt | grep abc | awk '{SUM+=$2}END{print SUM}'
+  129  cat access.log | grep error
+  130  history
+  131  vi test3.txt
+  132  ls -ltr
+  133  sudo chattr +i sample.txt
+  134  rm -rf sample.txt
+  135  sudo chattr -i sample.txt
+  136  rm -rf sample.txt
+  137  ls -ltr
+  138  yum install httpd
+  139  sudo yum install httpd
+  140  systemctl status httpd
+  141  systemctl start httpd
+  142  sudo systemctl start httpd
+  143  systemctl status httpd
+  144  netstat
+  145  systemctl status http
+  146  ls -s
+  147  df
+  148  df -h
+  149  du -h -s
+  150  ifconfig
+  151  ifconfig | grep -i inet
+  152  ifconfig | grep -i inet | awk '{print $2}'
+  153  ifconfig | grep -w inet | awk '{print $2}'
+  154  ls
+  155  ll
+  156  ifconfig | grep -w inet
+  157  grep --help
+  158  cat access.log
+  159  cat access.log | grep -i GET
+  160  cat access.log | grep -i GET | awk '{print $1}'
+  161  cat access.log | grep -i GET | awk '{print $1}' | uniq -c
+  162  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort -r
+  163  cat access.log | grep -i GET | awk '{print $1}' | uniq -c | sort -n -r
+  164  cat access.log | grep -i GET | awk '{print $1}' |sort -r| uniq -c | sort -n -r
+  165  cat access.log | grep -i POST | awk '{print $1}' |sort -r| uniq -c | sort -n -r
+  166  cat access.log | grep -i GET | awk -F '-' '{print $1,$3}' | awk '{print $1,$4}'
+  167  ls
+  168  touch sample.txt
+  169  ll
+  170  ls -la
+  171  cd /etc/
+  172  ls
+  173  vi profile
+  174  cd
+  175  umask 022
+  176  vi sample1.txt
+  177  ls -ltr
+  178  chmod 666 sample1.txt
+  179  ls -ltr
+  181  cd /usr/lib
+  182  ll
+  183  cd
+  184  cd /bin/
+  185  ll
+  186  cd /usr/local/bin/
+  187  ll
+  188  cd
+  189  cd /usr/sbin/
+  190  ll
+  191  vi file.txt
+  192  ll
+
+
+
+7. Devops_Linux_Commands:
+=========================
+Softlink vs hardlink:
+---------------------
+ln  	-> Hardlink
+ln -s	-> Softlink
+
+service --> systemctl
+
+lrwxrwxrwx  1 root root   30 Mar 26 17:36 sendmail -> /etc/alternatives/mta-sendmail
+lrwxrwxrwx  1 root root   24 Mar 26 17:36 sendmail.postfix -> ../sbin/sendmail.postfix
+
+ln file1 file1-hard
+
+
+Hard link
+---------
+INODE value for hard link is SAME
+Both the files talk to the INODE value
+Hardlink file point to INODE value
+If source file is deleted hardlink file also will  show data
+
+Softlink
+--------
+INODE value for soft link is DIFFERENT
+The files talk to each other
+Softlink file direcly point to source value
+If source file is deleted softlink file also will not show anything
+It is useful to install any software/packages
+
+Ping
+wget 
+curl --> It is used for download, upload, delete purpose
+         it supports all http service
+		 GET,POST,DELETE,PUT
+useradd
+passwd
+
+wget url -P /path/to/folder
+
+curl -o target/path/filename URL
+
+curl --create-dirs -O --output-dir /tmp/receipes https://example.com/pancakes.jpg
+
+curl -L -o target/path/filename URL -> curl -L -o ~/tomcat/tomcat.tar.gz <tomcat URL>
+
+[ec2-user@ip-172-31-45-249 ~]$ history
+    1  vi file2
+    2  ln -s file2 soft-file2
+    3  cat file2
+    4  cat soft-file2
+    5  vi soft-file2
+    6  cat soft-file2
+    7  cat file2
+    8  vi file1
+    9  ln file1 hard-file1
+   10  cat hard-file1
+   11  cat file
+   12  cat file1
+   13  vi hard-file1
+   14  cat file1
+   15  ls -ltri
+   16  rm -rf file2
+   17  ls -ltri
+   18  cat soft-file2
+   19  rm -rf file1
+   20  cat hard-file1
+   21  ls -ltr
+   22  vi file2
+   23  ls -ltri
+   24  rm -rf soft-file2
+   25  ls -ltri
+   26  cat file2
+   27  history
+   28  ping google.com
+   29  ping facebook.com
+   30  host www.google.com
+   31  history
+
+8. DevOps_linux_commands_ssh_keygen:
+====================================
+
+Useful site for linux commands:
+------------------------------
+https://www.geeksforgeeks.org/introduction-to-linux-operating-system/
+
+-> Password less authentication:
+--------------------------------
+- If we want connect other machine
+	1. take public key of our machine
+	
+	2. paste our public key to another system in authorization_keys
+	
+	3. the try to access using ssh commands		
+			ssh-keygen ec2-user@ip-172-31-10-164
+
+adduser madhu
+   33  sudo adduser madhu
+   34  sudo useradd mahesh
+   35  cat /etc/passwd
+   36  cat /etc/passwd | awk -F ':' {print $1}
+   37  cat /etc/passwd | awk -F ':' '{print $1}'
+   38  cut -f 1 -d: /etc/passwd
+   39  passwd madhu
+   40  sudo passwd madhu
+   41  su -madhu
+   42  su - madhu
+   43  cd ~/.ssh
+   44  ls
+   45  vi authorized_keys
+   46  cd
+   47  cd ~/.ssh
+   48  vi authorized_keys
+   49  cd
+   50  ll
+   51  ssh ec2-user@65.2.35.185
+   52  cd ~/.ssh/
+   53  ll
+   54  ssh-keygen
+   55  ll
+   56  cat id_rsa.pub
+   57  ssh ec2-user@65.2.35.185
+   58  historu
+   59  history
+
+ ssh madhu@13.234.232.233
+    2  ssh-keygen
+    3  cat /home/ec2-user/.ssh/id_rsa
+    4  vi /home/ec2-user/.ssh/id_rsa
+    5  cd /home/ec2-user/.ssh/
+    6  ll
+    7  cat id_rsa.pub
+    8  ssh madhu@13.234.232.233
+    9  cat id_rsa.pub
+   10  ssh ec2-user@13.234.232.233
+   11  ll
+   12  vi authorized_keys
+   13  history
+     date
+   15  date R
+   16  date -R
+   17  cal
+   19  cal -y
+   18  cd
+   20  cal -q
+   21  cal -Q
+   22  cal -m
+   23  cal -t
+
+14  date
+   15  date R
+   16  date -R
+   17  cal
+   18  cd
+   19  cal -y
+   20  cal -q
+   21  cal -Q
+   22  cal -m
+   23  cal -t
+   24  history
+   25  cal 2020
+   26  seq
+   27  seq 56789
+   28  seq 7
+   29  seq -5 5
+   30  bc
+   31  seq 1 2 20
+   32  seq -s ' ' 1 10
+   33  man
+   34  whatis
+   35  hi this is first line
+   36  pwd
+   37  ls -a
+   38  ls -lh
+   39  ls -ld
+   40  ls -i
+   41  ls -s
+   42  df
+
+
+9. Devops_Linux_Commands:
+=========================
+password less authentication
+----------------------------
+connect ssh with shortcut:
+--------------------------
+redirect option > >>
+--------------------
+cron job
+--------
+password less authentication
+----------------------------
+1. Developer as for machine access
+	. create user <adduser>
+	. su - <username>
+    . create authorized_keys file
+	. ask the developer provide public key
+	. add that key into authorized_keys
+	. change permission chmod 400 authorized_keys
+	. ssh madhu@<IP address>
+
+
+connect ssh with shortcut:
+--------------------------
+~/.ssh/
+
+config - file
+
+Host jenkins
+	HostName 65.2.124.174
+	User ec2-user
+	Identifyfile /droves/f/Devops/AWSKey/jms.pem
+	SeverAliveInterval 10
+	
+1.What is Zombie process
+
+[ec2-user@ip-172-31-33-153 ~]$ ps aux | grep 'Z'
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+ec2-user 32642  0.0  0.0 119420   908 pts/0    S+   11:03   0:00 grep --color=auto Z
+
+[ec2-user@ip-172-31-33-153 ~]$ kill -9 32642
+
+2. from whate the top command data will come up
+   ans) [ec2-user@ip-172-31-33-153 ~]$ cd /proc/
+	     [ec2-user@ip-172-31-33-153 proc]$ vi cpuinfo
+    memory utilization     
+		 [ec2-user@ip-172-31-33-153 ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        482M     0  482M   0% /dev
+tmpfs           492M     0  492M   0% /dev/shm
+tmpfs           492M  488K  492M   1% /run
+tmpfs           492M     0  492M   0% /sys/fs/cgroup
+/dev/xvda1      8.0G  1.4G  6.7G  18% /
+tmpfs            99M     0   99M   0% /run/user/1000
+tmpfs            99M     0   99M   0% /run/user/0
+
+=> cpu utilization => "top" command
+=> [ec2-user@ip-172-31-33-153 ~]$ free -kh
+              total        used        free      shared  buff/cache   available
+Mem:           983M         96M        413M        488K        473M        744M
+Swap:            0B          0B          0B
+
+=> [ec2-user@ip-172-31-33-153 ~]$ uptime
+ 10:58:09 up  1:26,  1 user,  load average: 0.00, 0.00, 0.00
+
+0.00, 0.00, 0.00 => 1 min(.1), 5 min, 15 mins load
+
+
+Redirector (>) :
+=================
+To store contenct in file
+
+[ec2-user@ip-172-31-33-153 ~]$ echo 'this is devops class' > test.txt
+
+
+Goto volume -> take volume -> crate new intance and that volume
+
+-> create Image for instance -> goto AMI's -> go to instances -> goto lanuncinstance and select my AMI's
+
+cd ~/.ssh/
+    3  ll
+    4  ssh-keygen
+    5  ll
+    6  cat id_rsa.pub
+    7  ssh ec2-user@65.0.95.72
+    8  adduser madhu
+    9  sudo adduser madhu
+   10  sudo passwd madhu
+   11  usermod -aG sudo username
+   12  cd
+   13  sudo usermod -aG sudo username
+   14  sudo -i
+   15  ll
+   16  cd ~/.ssh/
+   17  ll
+   18  vi authorized_keys
+   19  exit
+
+1  cd ~/.ssh/
+    2  ll
+    3  vi authorized_keys
+    4  ssh ec2-user@65.0.95.72
+    5  ll
+    6  cd
+    7  ll
+    8  su - madhu
+    9  useradd madhu
+   10  sudo useradd madhu
+   11  sudo passwd madhu
+   12  su - madhu
+   13  uptime
+   14  top
+   15  cd /proc/
+   16  ll
+   17  vi cpuinfo
+   18  cd
+   19  df -h
+   20  free -kh
+   21  uptime
+   22  ps
+   23  ps aux | grep 'Z'
+   24  echo 'this is devops class' > test.txt
+   25  cat test.txt
+   26  ps aux >test1.txt
+   27  cat test1.txt
+   28  vi test.txt
+   29  echo 'this is linux' >> test.txt
+   30  cat test.txt
+
+10. Devops_Linux_Cronjob_Vi_editor_shortcuts
+=============================================
+https://scotch.io/tutorials/how-to-create-an-ssh-shortcut
+
+Q) col1,col2
+	1,10
+	3,11
+	10,34
+	34,21
+	
+I want print morethan 10 values in col1
+
+A) [ec2-user@ip-172-31-45-249 ~]$ cat sample.txt | awk -F ',' '{print $1}'| awk '$1>10'
+
+https://dzone.com/devops-tutorials-tools-news
+
+https://devops.com/sign-up-for-our-newsletter-thank-you/
+
+Cronjob(Scheduler):
+===================
+Script --> send a logs to a client
+
+  * 	  * 	 * 		  * 	    *
+Mint	Hours	Day		Month  Day of the week
+0-59	0-23	1-31	1-12	0-7
+
+0 0 * * * sh logpurge.sh 2>&1 output.log &
+
+https://crontab.guru/#1_3-10_*_*_MON-FRI
+
+1) How to run a job in back ground
+ using "&"
+logpurge means deleting logs
+0 input
+1 stdinput
+2 stderror
+
+5  cat sample.txt | awk -F ',' '{print $1}'| awk '$1>10'
+   76  uptime
+   77  crontab -e
+   78  sudo yum install crontabs
+   79  crontab -l
+   80  crontab -e
+   81  vi hello.sh
+   82  sh hello.sh
+   83  crontab -e
+   84  pwd
+   85  crontab -e
+   86  ll
+   87  cat mygreeting.log
+   88  sh hello.sh
+   89  vi hello.sh
+   90  ll
+   91  cat mygreeting.log
+   92  crontab -l
+   93  crontab --help
+   94  vi data.txt
+
+11. DevOps_Linux_issues_questions_discussion:
+=============================================
+create sudo user in ubuntu:
+---------------------------
+https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-ubuntu-quickstart
+https://linuxize.com/post/how-to-create-a-sudo-user-on-ubuntu/
+
+12. DevOps_Linux_shell_script:
+==============================
+go to root user - 
+cron tab available in = /var/spool/cron/
+[root@ip-172-31-45-249 ~]# cd /var/spool/cron/
+-rw------- 1 ec2-user ec2-user 60 Apr 21 12:12 ec2-user
+
+Migration:
+==========
+one server to another server
+
+Each user crontab files moved from one server to another server
+
+Version upgradation
+
+
+-> if system not required
+
+https://superuser.com/questions/597168/total-disk-usage-for-a-particular-user
+
+ uptime
+   77  crontab -e
+   78  sudo yum install crontabs
+   79  crontab -l
+   80  crontab -e
+   81  vi hello.sh
+   82  sh hello.sh
+   83  crontab -e
+   84  pwd
+   85  crontab -e
+   86  ll
+   87  cat mygreeting.log
+   88  sh hello.sh
+   89  vi hello.sh
+   90  ll
+   91  cat mygreeting.log
+   92  crontab -l
+   93  crontab --help
+   94  vi data.txt
+   95  history
+   96  cat /etc/group
+   97  crontab -l
+   98  crontab -e
+   99  sudo -i
+  100  du -h ~
+  101  du -h ~ec2-user
+  102  cat /etc/passwd
+
+reboot - 
+how to shoutdown particual time - shutdown
+
+
+Scheduling a shutdown
+To shutdown run the command:
+
+sudo shutdown -P +60
+That will wait 60 mins before starting the shutdown sequence.
+
+Q) what is at vs cron
+
+at - it useful to run a job only one time
+cron - run a job as per schedule
+
+https://www.geeksforgeeks.org/at-command-in-linux-with-examples/#:~:text=at%20command%20is%20a%20command,any%20time%20in%20the%20future.&text=could%20be%20used%20with%20at%20command%20to%20schedule%20a%20job.
+
+sudo apt-get update
+sudo apt-get install at
+at Monday +20 minutes
+
+Shell script examples:
+----------------------
+#!/bin/bash
+#! - shebang line
+/bin/bash - in bin bash is installed
+
+:' multiple line comment'
+-----------------------------------------------------
+[ec2-user@ip-172-31-45-249 ~]$ vi addition.sh
+#!/bin/bash
+# This is addition
+
+echo "enter a value"
+read a
+echo "enter b value"
+read b
+
+((sum = $a+$b))
+
+echo $sum
+---------------------------------------------------
+
+$# = no.of arguments passed
+$* = it will show values
+$? = previous command is true it will display 0 else 1
+$1 = To read particual argument (first argument)
+$2 = To read particual argument (second argument)
+
+set -x to trouble shoot = it shows how many lines are executed
+
+[ec2-user@ip-172-31-45-249 ~]$ cat expressions.sh
+#!/bin/bash
+
+if [ $# -ne 2 ]
+then
+        echo "USAGE: sh expression.sh <arg1> <arg2>"
+        exit 1
+fi
+echo 'this is $# :' $#
+echo 'this is $* :' $*
+echo 'this is $? :' $?
+[ec2-user@ip-172-31-45-249 ~]$ sh expressions.sh devops madhu
+this is $# : 2
+this is $* : devops madhu
+this is $? : 0
+
+[ec2-user@ip-172-31-45-249 ~]$ cat condition.sh
+#!/bin/sh
+false
+result=$?
+if [ $result = 0 ];then
+  echo "this condition is true"
+ else
+  echo "this condition is false"
+fi
+-----------------------------------------------------
+[ec2-user@ip-172-31-45-249 ~]$ sh condition.sh
+this condition is false
+[ec2-user@ip-172-31-45-249 ~]$ vi condition.sh
+[ec2-user@ip-172-31-45-249 ~]$ cat condition.sh
+#!/bin/sh
+true
+result=$?
+if [ $result = 0 ];then
+  echo "this condition is true"
+ else
+  echo "this condition is false"
+fi
+
+[ec2-user@ip-172-31-45-249 ~]$ sh condition.sh
+this condition is true
+-----------------------------------------------------
+https://linuxhint.com/30_bash_script_examples/
+https://www.macs.hw.ac.uk/~hwloidl/Courses/LinuxIntro/x961.html
+https://github.com/epety/100-shell-script-examples/blob/master/001-inpath.sh
+https://www.ubuntupit.com/simple-yet-effective-linux-shell-script-examples/ 
+
+13. DevOps_Linux_shell_script:
+==============================
+https://github.com/PacktPublishing/Mastering-Linux-Shell-Scripting-Second-Edition
+
+age = 18 
+age > 18
+eligible for vote 
+
+[ec2-user@ip-172-31-45-249 ~]$ cat voting.sh
+#!/bin/bash
+
+#echo "Please enter your age"
+#read age
+#age=18
+
+if [ $# -ne 1 ]
+then
+        echo "USAGE: sh voting.sh <argvalue>"
+
+        exit 1
+fi
+age=$1
+
+if [ $age -ge 18 ];
+then
+        echo "You are eligible for vote"
+else
+        echo "You are not eligible for vote"
+fi
+[ec2-user@ip-172-31-45-249 ~]$ sh voting.sh
+USAGE: sh voting.sh <argvalue>
+[ec2-user@ip-172-31-45-249 ~]$ sh voting.sh 4
+You are not eligible for vote
+[ec2-user@ip-172-31-45-249 ~]$ cat andcondition.sh
+#!/bin/bash
+echo "enter username"
+read username
+echo "enter password"
+read password
+
+if [[ $username == "admin" && $password == "admin123" ]];
+then
+        echo "The username and password are correct.. login successful"
+else
+        echo "The username and password are wrong.."
+        fi
+
+[ec2-user@ip-172-31-45-249 ~]$ sh andcondition.sh
+enter username
+admin
+enter password
+admin123
+The username and password are correct.. login successful
+[ec2-user@ip-172-31-45-249 ~]$ cat orcondition.sh
+#!/bin/bash
+echo "enter marks"
+read marks
+echo "enter scale"
+read scale
+if [[ $marks -eq 35 || $scale -ge 6 ]];
+then
+        echo "You passed the exam"
+else
+        echo "You failed the exam"
+        fi
+
+[ec2-user@ip-172-31-45-249 ~]$ ./orcondition.sh
+enter marks
+43
+enter scale
+53
+You passed the exam
+
+-------------
+[ec2-user@ip-172-31-45-249 ~]$ cat mobile.sh
+#!/bin/bash
+echo "which mobile you want"
+read mobile
+if [ $mobile == "Nokia" ];
+then
+        echo "budget phone its very strong phone"
+elif [ $mobile == "Samsung" ];
+then
+        echo "its nice phone"
+elif [ $mobile == "mi" ];
+then
+        echo "very hanging phone"
+else
+        echo "go for other choice"
+fi
+
+[ec2-user@ip-172-31-45-249 ~]$ sh mobile.sh
+which mobile you want
+mi
+very hanging phone
+[ec2-user@ip-172-31-45-249 ~]$ cat mobile_swith.sh
+#!/bin/bash
+echo "which mobile you want"
+read mobile
+case $mobile in
+nokia)
+echo "budget phone its very strong phone";;
+samsung)
+echo "its nice phone";;
+mi)
+echo "very hanging phone";;
+*)
+echo "go for other choice";;
+esac
+[ec2-user@ip-172-31-45-249 ~]$ sh mobile_swith.sh
+which mobile you want
+mi
+very hanging phone
+--------------
+
+14. DevOps_Linux_shell_script:
+==============================
+For loop
+While loop
+strings
+
+
+print 1 to 10 numbers
+---------------------
+[ec2-user@ip-172-31-45-249 ~]$ cat forloop.sh
+#!/bin/bash
+
+for (( counter=1; counter<=10; counter++ ))
+do
+echo -n "$counter "
+done
+
+printf "\n"
+[ec2-user@ip-172-31-45-249 ~]$ sh forloop.sh
+1 2 3 4 5 6 7 8 9 10
+----------------------------------
+[ec2-user@ip-172-31-45-249 ~]$ cat reverseforloop.sh
+#!/bin/bash
+
+for (( counter=$1; counter>0; counter-- ))
+do
+echo -n "$counter "
+done
+
+printf "\n"
+[ec2-user@ip-172-31-45-249 ~]$ sh reverseforloop.sh 5
+5 4 3 2 1
+-------------------------------
+[ec2-user@ip-172-31-45-249 ~]$ cat whileloop.sh
+#!/bin/bash
+i=0
+
+while [ $i -le 2 ]
+do
+echo Number: $i
+((i++))
+done
+[ec2-user@ip-172-31-45-249 ~]$ sh whileloop.sh
+Number: 0
+Number: 1
+Number: 2
+------------------------------
+String:
+-------
+[ec2-user@ip-172-31-45-249 ~]$ cat strings.sh
+#!/bin/bash
+firstname="Madhu"
+lastname="Sudhan"
+echo "$firstname $lastname"
+output=$firstname$lastname
+echo ${output:0:7}
+[ec2-user@ip-172-31-45-249 ~]$ ./strings.sh
+Madhu Sudhan
+MadhuSu
+--------------------------
+Reversing a string:
+-------------------
+[ec2-user@ip-172-31-45-249 ~]$ cat reversestring.sh
+#!/bin/bash
+name="Mahesh"
+reverse=""
+len=${#name}
+for(( i=$len-1; i>=0; i-- ))
+do
+        reverse="$reverse${name:$i:1}"
+done
+echo $reverse
+[ec2-user@ip-172-31-45-249 ~]$ sh reversestring.sh
+hsehaM
+----------------------------------
+Q) Creating configuration files in different environments
+[ec2-user@ip-172-31-45-249 ~]$ cat env_forloop.sh
+#!/bin/bash
+#file="file1.txt"
+for var in "dev" "predev" "staging" "prod"
+do
+        touch "myfile_$var.txt"
+done
+[ec2-user@ip-172-31-45-249 ~]$ sh env_forloop.sh
+==> it creates three files
+-------------------------
+15. DevOps_Linux_shell_script:
+==============================
+Functions
+sed
+[ec2-user@ip-172-31-45-249 ~]$ cat samplet.txt
+madhu sudhan reddy y b
+madhu sudhan reddy y b
+madhu sudhan reddy y b
+madhu sudhan reddy y b
+[ec2-user@ip-172-31-45-249 ~]$ cat samplet.txt | uniq | tr ' ' '\n' | sort -u
+b
+madhu
+reddy
+sudhan
+y
+---------
+Ans)  find . -printf "%p %f\n" | sort -f -k2 | uniq -Di -fi
+
+Q) both direcotries have common files
+
+SED Command: i =  -i[SUFFIX], --in-place[=SUFFIX]
+                 edit files in place (makes backup if SUFFIX supplied)
+
+------------
+[ec2-user@ip-172-31-45-249 ~]$ sed 's/madhu/Mahesh/g' samplet.txt
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+[ec2-user@ip-172-31-45-249 ~]$ vi samplet.txt
+[ec2-user@ip-172-31-45-249 ~]$ sed -i 's/madhu/Mahesh/g' samplet.txt
+[ec2-user@ip-172-31-45-249 ~]$ vi samplet.txt
+[ec2-user@ip-172-31-45-249 ~]$ cat samplet.txt
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+Mahesh sudhan reddy y b
+
+tree - command - it will show the tree of directry and files
+
+Q) what is the purpose of AWK and SED command
+
+Q) Create file with current date
+https://stackoverflow.com/questions/48270960/how-to-create-a-file-with-todays-date-in-the-filename
+
+[ec2-user@ip-172-31-45-249 ~]$ touch "test2_$(date +"%F %T")"
+
+[ec2-user@ip-172-31-45-249 ~]$ cat functiontest.sh
+#!/bin/bash
+function data()
+{
+echo "Learn Devops"
+}
+data
+[ec2-user@ip-172-31-45-249 ~]$ sh functiontest.sh
+Learn Devops
+[ec2-user@ip-172-31-45-249 ~]$ cat sumfunction.sh
+#!/bin/bash
+function sum()
+{
+area=$(($1 + $2))
+echo "Area is : $area"
+}
+sum 10 20
+[ec2-user@ip-172-31-45-249 ~]$ sh sumfunction.sh
+Area is : 30
+[ec2-user@ip-172-31-45-249 ~]$ cat returnfunction.sh
+#!/bin/bash
+function greeting() {
+
+str="Hello, $name"
+echo $str
+
+}
+
+echo "Enter your name"
+read name
+
+val=$(greeting)
+echo "Return value of the function is $val"
+[ec2-user@ip-172-31-45-249 ~]$ sh returnfunction.sh
+Enter your name
+Mahesh
+Return value of the function is Hello, Mahesh
+
+----------------------------------------------------------
+16. DevOps_Linux_Real_time_interview_Questions:
+===============================================
+
+
+17. Git_introduction_setup:
+===========================
+git
+github --> 70% by developer
+GIT - Git is a command line interface
+
+Version Control Systems:
+------------------------
+two types of version control system
+
+1. Centralized version control system - if it goes down we can not pull, push, clone.. we are facing single point of failure (SVN)
+2. Distributed version control system - overcome the single point of failure
+
+SVN/cvs 																Git different
+-----------------                                                    -------------------
+centralized remote repository 										     dvcs
+single point of failure											 No single point of failure
+All commands are executed in central repository					some commands are executed in central repository					 
+We must have internet connectivity								No need of internet till we push the code
+
+
+-> Create git project
+----------------------
+1. create one folder - first
+2. create a file inside folder - 
+3. convert your folder to git project - using git init
+    changes username mail
+	git config --global --edit
+	git config --global --name "Mahesh"
+	git config --global --email "bgnanesh6@gmail.com"
+4. check status --> git status
+5. commit your changes --> git commit -m "<enter message>"
+6. check your destination path/origin path
+7. create github account
+8. create same name in report repo(first)
+9. added destination (git remote add origin <url>)
+10. git push origin master
+
+
+git remote add origin https://github.com/bgnanesh56/first.git
+#git remote set-url origin https://github.com/bgnanesh56/first.git
+
+git mail id - bgnanesh6@gmail
+User name - bgnanesh56
+password - Mahesh@12345678
+
+[ec2-user@ip-172-31-34-101 first]$ history
+    1  git --version
+    2  yum instal git -y
+    3  yum install git -y
+    4  sudo yum install git -y
+    5  git --version
+    6  git --help
+    7  show
+    8  mkdir firt
+    9  ll
+   10  rm firt/
+   11  rm -rf firt/
+   12  ll
+   13  mkdir first
+   14  cd first/
+   15  vi sample.txt
+   16  ll
+   17  ls -ltra
+   18  git init
+   19  ls -ltra
+   20  cd .git/
+   21  ll
+   22  cd ..
+   23  git status
+   24  git add .
+   25  git status
+   26  git commit -m "added sample file"
+   27  git log
+   28  git config --global --edit
+   29  git log
+   30  git push origin master
+   31  git remote -v
+   32  git remote add origin https://github.com/bgnanesh56/first.git
+   33  git remote -v
+   34  git push origin master
+   35  vi example.txt
+   36  git status
+   37  git add .
+   38  git status
+   39  git commint -m "creted example filewq"
+   40  git log
+   41  git comint -m "creted example file"
+   42  git status
+   43  git commit -m "added example file"
+   44  git status
+   45  git log
+   46  git push origin master
+
+18. Git_clone_fork_mergeconflicts:
+==================================
+microsoft acquired
+
+1.same project
+2. working with different people
+3. passwordless
+4. clone
+5. fork
+
+ls -ld /tmp
+------ 20 ---- ---- <filesize> <date> /tmp
+
+[ec2-user@ip-172-31-34-101 ~]$ ls -ld /tmp
+drwxrwxrwt 8 root root 172 May  3 10:13 /tmp
+
+what is sticky bit and what is tmp dir has special permission?
+
+1. working area
+2. 
+
+48  cd
+   49  ll
+   50  sudo mkdir second
+   51  cd second/
+   52  ll
+   53  git init
+   54  sudo git init
+   55  ls -ltra
+   56  touch file1.txt
+   57  ll
+   58  vi file1.txtx
+   59  vi file1.txt
+   60  sudo vi file1.txt
+   61  git status
+   62  git add .
+   63  cd
+   64  ll
+   65  rm -rf second/
+   66  sudo rm -rf second/
+   67  ll
+   68  su -i
+   69  sudo -i
+   70  ls
+   71  mkdir second
+   72  ls
+   73  cd second/
+   74  ll
+   75  vi file2.txt
+   76  git init
+   77  git status
+   78  git add .
+   79  git commit -m "Added file2 folder"
+   80  git status
+   81  git push origin master
+   82  git remote add origin https://github.com/bgnanesh56/first.git
+   83  git push origin master
+   84  git log
+   85  git remote -v
+   86  git push origin master
+   87  git remote set-url origin https://github.com/bgnanesh56/second.git
+   88  git push origin master
+   89  ls -ld /tmp
+   90  ll
+   91  cd second/
+   92  ls -ltra
+   93  git log
+   94  vi today.txt
+   95  git status
+   96  git add .
+   97  git commit -m "today file created"
+   98  git push origin master
+   99  git log
+  100  git remote -v
+  101  ll
+  102  cd second/
+  103  ll
+  104  vi today.txt
+  105  git status
+  106  git diff
+  107  git add .
+  108  ll
+  109  git status
+  110  git commit -m "updated todays fiel"
+  111  git status
+  112  git push origin master
+  113  git log
+  114  git log --pretty=oneline
+  115  git remote -v
+  116  cd ~/.ssh/
+  117  ll
+  118  ssh-keygen
+  119  ls -ltra
+  120  cat id_rsa.pub
+  121  cd
+  122  cd second/
+  123  ll
+  124  vi today.txt
+  125  git status
+  126  gid add .
+  127  git add .
+  128  git commit -m "added third line"
+  129  git push origin master
+  130  git remote set-url origin git@github.com:bgnanesh56/second.git
+  131  git push origin master
+  132  git clone git@github.com:bgnanesh56/existingone.git
+  133  ll
+  134  cd
+  135  git clone git@github.com:bgnanesh56/existingone.git
+  136  ll
+  137  cd existingone/
+  138  ls -ltra
+  139  git remote -v
+  140  ls -ltra
+  141  vi myfile.txt
+  142  git status
+  143  git add .
+  144  git commit -m "new file myfile created"
+  145  git branch
+  146  git push origin master
+  147  git push origin main
+  148  cd
+  149  cd second/
+  150  git branch
+  151  cd
+  152  cd e
+  153  ll
+  154  cd existingone/
+  155  ll
+
+Git fork
+---------
+
+19. Git_branching_tagging:
+==========================
+SLA - Software License Agreement - Service Level Agreement
+
+predev,dev,acc,train,prod
+predev,dev,staging,preprod,prod
+
+Tags:
+=====
+laightweight tag - git tag v1.0
+annotated tad - git tag -a v1.1 -m "<reason for releases>"
+
+20. Git_merge_vs_rebase_organization_pull_request:
+==================================================
+git merge
+git merge squash
+git rebase
+git cherrypick
+
+Fast-forward merging:
+========================
+- There were no commits in master branch before merging feature branch with master branch 
+
+Fast-forward recursive strategy:
+================================
+- There were some commits in master branch before merging feature branch with master branch 
+- In this scenario while doing merge with master branch one new commit will create in master branch which is called GIT MERGE SQUASH.
+- SQUASH means combining multiple commits into single commit
+
+Merge made by the 'recursive' strategy.
+
+git merge --squash feature1
+
+[ec2-user@ip-172-31-34-101 second]$ git merge --squash feature2
+Squash commit -- not updating HEAD
+Automatic merge went well; stopped before committing as requested
+
+Rebase:
+-------
+[ec2-user@ip-172-31-34-101 second]$ git rebase feature3
+First, rewinding head to replay your work on top of it...
+Fast-forwarded master to feature3.
+
+
+21. Git_cherry_pick_ammend_git_undoing:
+=======================================
+Git Cherrypick:
+---------------
+one kind of merging only
+what ever commit id if you want to add that file to master we will use cherry pick
+
+[ec2-user@ip-172-31-34-101 third]$ git cherry-pick 8b054c1
+
+Git undoing:
+------------
+
+Working Area ==> git add --> Staging/index -->git commit --> commit history --> git push
+undo ur changes
+git checkout -- before git add 
+
+[ec2-user@ip-172-31-34-101 third]$ git checkout sample2.txt
+Updated 1 path from the index
+
+git reset 
+	=> soft = only latest commit msg will remove, the changes are still avilable
+	=> mixed = default option -> it will delete in index and committed area but the data won't change
+	=> hard = it will delete all the areas as well as data also
+	
+git revert - it will create one commit for one delete and new commit for new changes
+
+Ammend:
+=======
+To rename/modify the git commit message
+
+in branching rules we will not allow the user to force push
+
+git push -f origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
