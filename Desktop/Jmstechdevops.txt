@@ -1518,9 +1518,561 @@ in branching rules we will not allow the user to force push
 
 git push -f origin master
 
+22. Git_interview_questions:
+-----------------------------
+what are the files we do not want push into git hub we keep then in .gitignore file
+
+ 1  git --version
+    2  yum instal git -y
+    3  yum install git -y
+    4  sudo yum install git -y
+    5  git --version
+    6  git --help
+    7  show
+    8  mkdir firt
+    9  ll
+   10  rm firt/
+   11  rm -rf firt/
+   12  ll
+   13  mkdir first
+   14  cd first/
+   15  vi sample.txt
+   16  ll
+   17  ls -ltra
+   18  git init
+   19  ls -ltra
+   20  cd .git/
+   21  ll
+   22  cd ..
+   23  git status
+   24  git add .
+   25  git status
+   26  git commit -m "added sample file"
+   27  git log
+   28  git config --global --edit
+   29  git log
+   30  git push origin master
+   31  git remote -v
+   32  git remote add origin https://github.com/bgnanesh56/first.git
+   33  git remote -v
+   34  git push origin master
+   35  vi example.txt
+   36  git status
+   37  git add .
+   38  git status
+   39  git commint -m "creted example filewq"
+   40  git log
+   41  git comint -m "creted example file"
+   42  git status
+   43  git commit -m "added example file"
+   44  git status
+   45  git log
+   46  git push origin master
+   47  history
+   48  cd
+   49  ll
+   50  sudo mkdir second
+   51  cd second/
+   52  ll
+   53  git init
+   54  sudo git init
+   55  ls -ltra
+   56  touch file1.txt
+   57  ll
+   58  vi file1.txtx
+   59  vi file1.txt
+   60  sudo vi file1.txt
+   61  git status
+   62  git add .
+   63  cd
+   64  ll
+   65  rm -rf second/
+   66  sudo rm -rf second/
+   67  ll
+   68  su -i
+   69  sudo -i
+   70  ls
+   71  mkdir second
+   72  ls
+   73  cd second/
+   74  ll
+   75  vi file2.txt
+   76  git init
+   77  git status
+   78  git add .
+   79  git commit -m "Added file2 folder"
+   80  git status
+   81  git push origin master
+   82  git remote add origin https://github.com/bgnanesh56/first.git
+   83  git push origin master
+   84  git log
+   85  git remote -v
+   86  git push origin master
+   87  git remote set-url origin https://github.com/bgnanesh56/second.git
+   88  git push origin master
+   89  ls -ld /tmp
+   90  ll
+   91  cd second/
+   92  ls -ltra
+   93  git log
+   94  vi today.txt
+   95  git status
+   96  git add .
+   97  git commit -m "today file created"
+   98  git push origin master
+   99  git log
+  100  git remote -v
+  101  ll
+  102  cd second/
+  103  ll
+  104  vi today.txt
+  105  git status
+  106  git diff
+  107  git add .
+  108  ll
+  109  git status
+  110  git commit -m "updated todays fiel"
+  111  git status
+  112  git push origin master
+  113  git log
+  114  git log --pretty=oneline
+  115  git remote -v
+  116  cd ~/.ssh/
+  117  ll
+  118  ssh-keygen
+  119  ls -ltra
+  120  cat id_rsa.pub
+  121  cd
+  122  cd second/
+  123  ll
+  124  vi today.txt
+  125  git status
+  126  gid add .
+  127  git add .
+  128  git commit -m "added third line"
+  129  git push origin master
+  130  git remote set-url origin git@github.com:bgnanesh56/second.git
+  131  git push origin master
+  132  git clone git@github.com:bgnanesh56/existingone.git
+  133  ll
+  134  cd
+  135  git clone git@github.com:bgnanesh56/existingone.git
+  136  ll
+  137  cd existingone/
+  138  ls -ltra
+  139  git remote -v
+  140  ls -ltra
+  141  vi myfile.txt
+  142  git status
+  143  git add .
+  144  git commit -m "new file myfile created"
+  145  git branch
+  146  git push origin master
+  147  git push origin main
+  148  cd
+  149  cd second/
+  150  git branch
+  151  cd
+  152  cd e
+  153  ll
+  154  cd existingone/
+  155  ll
+  156  history
+  157  cd
+  158  du
+  159  top
+  160  iostat
+  161  df -h
+  162  du -h
+  163  du -h -s
+  164  umask
+  165  top
+  166  ps
+  167  top
+  168  ps
+  169  git config --list
+  170  ps -ef | grep init
+  171  touch passbook.txt
+  172  ls -l passbook.txt
+  173  > book1.txt
+  174  ll
+  175  ls -l
+  176  ll
+  177  cd second/
+  178  git log
+  179  git branch -l
+  180  git branch --list
+  181  git branch -a
+  182  git branch feature
+  183  git branch --list
+  184  git branch -a
+  185  git branch feature
+  186  git checkout feature
+  187  git branch -a
+  188  git log
+  189  vi feature.txt
+  190  git status
+  191  cd
+  192  cd existingone/
+  193  git branch
+  194  git status
+  195  cd ..
+  196  ll
+  197  cd second/
+  198  ll
+  199  rm -rf existingone/
+  200  git status
+  201  git add .
+  202  git commit -m "added feature file"
+  203  git status
+  204  git log
+  205  ll
+  206  git push origin feature
+  207  ll
+  208  git branch
+  209  vi merge.txt
+  210  git status
+  211  git add .
+  212  git commit -m "created merge file"
+  213  git push origin feature
+  214  git branch -l
+  215  git checkout master
+  216  git branch
+  217  git merge feature
+  218  git log
+  219  git push origin master
+  220  git push origin main
+  221  git status
+  222  git checkout feature
+  223  git status
+  224  git checkout master
+  225  git push origin master
+  226  git fetch origin master
+  227  ll
+  228  git push origin master
+  229  git merge feature
+  230  git pull origin master
+  231  git push origin master
+  232  git branch
+  233  git branch -d feature
+  234  git push origin -d feature
+  235  git branch -a
+  236  git checkout -b feature
+  237  git branch -a
+  238  vi newfile.txt
+  239  git add .
+  240  git commit -m "newfile added"
+  241  git push origin feature
+  242  ll
+  243  git push origin feature
+  244  git checkout master
+  245  git branch -d feature
+  246  git branch -D feature
+  247  git branch
+  248  ls -ltr
+  249  git pull origin master
+  250  git status
+  251  ll
+  252  git log
+  253  git tag --list
+  254  git tag v0.1
+  255  git tag --list
+  256  git tag -a v0.2 -m "Main release"
+  257  git tag --list
+  258  git log
+  259  git tag v0.01 26bbaf70cc6245fe985fc40783e1b24bd0ee79d4
+  260  git tag -l
+  261  git log
+  262  git push origin tag v0.01
+  263  git push --tags
+  264  git tag -l
+  265  git tag -d v0.01
+  266  git push origin -d :ref/tags/v0.01
+  267  git push origin -d :refs/tags/v0.01
+  268  git tag -d v0.01
+  269  git tag -l
+  270  git push origin -d :refs/tags/v0.01
+  271  git push origin :refs/tags/v0.01
+  272  cd second/
+  273  git branch -l
+  274  git branch -a
+  275  git log
+  276  git checkout -b feature1
+  277  git branch
+  278  git log
+  279  git branch
+  280  vi pastforwarding.txt
+  281  git add .
+  282  git commit -m "pastforwarding file created"
+  283  git log
+  284  vi pastforwarding.txt
+  285  git add .
+  286  git commit -m "pastforwarding file updated"
+  287  git log
+  288  git checkout master
+  289  git branch
+  290  git log
+  291  ll
+  292  git merge feature1
+  293  git log
+  294  git branch
+  295  git checkout feature1
+  296  vi pastforwarding.txt
+  297  git add .
+  298  git commit -m "fast-forwarding updated"
+  299  vi pastforwarding.txt
+  300  git add .
+  301  git commit -m "fast-forwarding recusive stratgy"
+  302  git log
+  303  git checkout master
+  304  ll
+  305  vi test2.txt
+  306  git add .
+  307  git commit -m "test2 file created"
+  308  vi test2.txt
+  309  git add .
+  310  git commit -m "test2 file updated"
+  311  git log
+  312  git branch
+  313  git merge feature1
+  314  git log
+  315  git log --pretty=oneline
+  316  git branch
+  317  git checkout -b feature2
+  318  git log
+  319  git branch
+  320  vi madhu.txt
+  321  git add .
+  322  git commit -m "created madhu file"
+  323  vi m
+  324  vi madhu.txt
+  325  git add .
+  326  git commit -m "updated madhu file"
+  327  git log
+  328  git checkout master
+  329  git log
+  330  ll
+  331  vi file2.txt
+  332  git add .
+  333  git commit -m "updated file2"
+  334  vi file2.txt
+  335  git add .
+  336  git commit -m "updated file2 second time"
+  337  git status
+  338  git merge --squash feature2
+  339  git log
+  340  q
+  341  git status
+  342  git commit -m "squashing"
+  343  git log
+  344  git log --oneline
+  345  ls -ltr
+  346  git branch
+  347  git checkout -b feature3
+  348  git log
+  349  git branch
+  350  vi punu.txt
+  351  git add .
+  352  git commit -m "f7"
+  353  vi punu.txt
+  354  git add .
+  355  git commit -m "f8"
+  356  git status
+  357  git checkout master
+  358  l
+  359  ll
+  360  vi loki.txt
+  361  git add .
+  362  git commit -m "b5"
+  363  vi loki.txt
+  364  git add .
+  365  git commit -m "b6"
+  366  git log
+  367  git checkout feature3
+  368  git log
+  369  git rebase master
+  370  git log
+  371  git checkout master
+  372  git rebase feature3
+  373  git log
+  374  ll
+  375  git log
+  376  cd
+  377  ll
+  378  mkdir third
+  379  cd third/
+  380  vi sample2.txt
+  381  git init
+  382  ls -ltra
+  383  git add .
+  384  git commit -m "m1"
+  385  ls -ltra
+  386  git log
+  387  git branch
+  388  vi file5.txt
+  389  git add .
+  390  git commit -m "m2"
+  391  git log
+  392  vi file5.txt
+  393  git add .
+  394  git commit -m "m3"
+  395  git log
+  396  git checkout -b feature5
+  397  git log
+  398  vi feature5.txt
+  399  git add .
+  400  git commit -m "f1"
+  401  git log
+  402  vi feature6.txt
+  403  git add .
+  404  git commit -m "f2"
+  405  git log
+  406  git checkout master
+  407  git branch
+  408  git log
+  409  ll
+  410  git cherry-pick 8b054c1
+  411  git log
+  412  ll
+  413  git cherry-pick 8b054c1
+  414  git cherry-pick --skip
+  415  ll
+  416  cd third/
+  417  ll
+  418  git status
+  419  vi sample2.txt
+  420  git status
+  421  git checkout sample2.txt
+  422  vi sample2.txt
+  423  git add .
+  424  git commit -m "added three lines"
+  425  git log
+  426  git status
+  427  git reset --soft HEAD~1
+  428  git log
+  429  git status
+  430  git commit -m "added three lines"
+  431  git reset HEAD~1
+  432  git status
+  433  git log
+  434  git status
+  435  git add .
+  436  git commit -m "added three lines"
+  437  git reset --hard HEAD~1
+  438  git log
+  439  cat sample2.txt
+  440  vi sample2.txt
+  441  git add .
+  442  git commit -m "added three lines"
+  443  git status
+  444  git remote -v
+  445  ls -ltra
+  446  git remote add origin git@github.com:bgnanesh56/third.git
+  447  git branch
+  448  git push origin master
+  449  vi sample2.txt
+  450  git add .
+  451  git commit -m "added two more lines"
+  452  git status
+  453  git push origin master
+  454  git log
+  455  git revert 208c20cd
+  456  git log
+  457  vi sample2.txt
+  458  git push origin master
+  459  git log
+  460  git commit --amend -m "changes are made for issue"
+  461  git log
+  462  git rebase -i HEAD~4
+  463  git log
+  464  git rebase -i HEAD~4
+  465  git rebase --edit-todo
+  466  git log
+  467  git rebase --edit-todo
+  468  git push -f origin master
+  469  git log
+  470  vi sample2.txt
+  471  git add .
+  472  git commit -m "updated f1"
+  473  git push origin master
+  474  git log
+  475  git rebase -i HEAD~3
+  476  git rebase --abort
+  477  git rebase -i HEAD~3
+  478  git log
+  479  git push -f origin master
+  480  vi .gitignore
+  481  git diff sample2.txt
+  482  ll
+  483  git diff file5.txt
+  484  git show
+  485  git log
+  486  history
 
 
+23. Jenkins_Introduction:
+=========================
+Jenkins
+bamboo
+udeploy
+circle ci
+travis ci
+gitlab
+tream city
+github actions
+azure devops
+aws devops
 
+Jenkins  --> oracle
+-------
+hudson 1.0 --> works only for CI
+oracle --> jenkins --> 2.0 (CI/CD)
+
+JDK is mandaroty - java - 1.8+
+
+it runs in 8080 port
+
+one server will run - the default server is JETTY
+
+atlassian (jenkins,bamboo,jira,confluece,hipchat)
+cloudbees jenkins
+
+setup jenkins many ways:
+------------------------
+generic way --> jenkins.war (java -jar jenkins.war --httpPort=1234)
+Linux machine
+download war file --> deploy into tomcat server
+.exe
+dockerized (container) single command
+
+24. Jenkins_first_job_github_integration:
+=========================================
+skip-certificate-check.hpi for SSL certificate issue for windows jenkins
+
+Configure System - Any servers integration with jenkins - like github server, Extended E-mail Notification, E-mail Notification ....
+Global tool configuration - Any software integration with jenkins - linke java,git,maven,docker....
+Manage plugins - installation of plugins
+
+without internet how to install plugins - HTTP Proxy Configuration using will do - Upload Plugin - download and upload that plugin
+
+Configure Global Security - Matrix-based security
+Credentials - If you want to connect any software like nexus, git, tomcat ...
+Manage Users - creating users
+
+
+1. Create a jenkins job print ipaddress
+2. create a jenkins job to print today date
+3. create a jenkins job to say 'Hello World!'
+4. Download your git project
+5. Hello world java application compile execute
+
+
+javac HelloWorld.java  --> Compile java code
+java HelloWorld  --->  Execute a java code
+
+
+25. Jenkins_build_automation:
+=============================
 
 
 
