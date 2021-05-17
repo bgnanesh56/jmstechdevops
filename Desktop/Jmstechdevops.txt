@@ -2070,26 +2070,250 @@ Manage Users - creating users
 javac HelloWorld.java  --> Compile java code
 java HelloWorld  --->  Execute a java code
 
+   1  sudo yum update -y
+    2   java –version
+    3  sudo yum install java-1.8* -y
+    4  sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
+    5  sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+    6  sudo yum install jenkins -y
+    7   sudo service jenkins start
+    8   sudo service jenkins status
+    9  sudo chkconfig jenkins on
+   10  cat /var/lib/jenkins/secrets/initialAdminPassword
+   11  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
 
 25. Jenkins_build_automation:
 =============================
+1. pollscm --> Some changes happens in repo after some time job will be trigger ==> it is pull based mechanism
+
+*/1 * * * *
+
+2. build periodically --> No worry about the changes build the job on a specific time  ==> it is pull based mechanism
+
+3.webhooks --> some changes happens immediately job will be trigger ==> it is push based mechanism
+
+ngrok - for windows
+
+26. Jenkins_Maven_Integration:
+------------------------------
+package --> deploy
+
+Libraries - jar/wars/ears
+
+jenkins.war --> web archive --> package
+
+Any software they want to implement they need libraries
+
+project --> lib(jars)
+project structure
+compile --> manually
+test --> manually
+
+Build Tools:
+------------
+ant
+maven
+gradle --> java
+sbt --> scala
+python --> wheel or egg, grape
+msbuild --> .net
+android
+ios
+......
+
+maven:
+------
+it is not only a build tool & project management tool 
+maven framework
+inbuilt life cycle
+pom.xml
 
 
+maven architecture:
+===================
+Repositories in mvn:
+--------------------
+Local repo  => .m2 folder
+Remote repo => means nexus repo, jfrog repo ...
+Central repo
+
+Maven Life Cycle:
+-----------------
+1. validate -> it checks the project structure is correct or nor
+2. compile -> code is correct or not
+3. test -> junit test cases
+4. package   -> deploy through tomcat --> it will create war/jar file
+5. verify -> code quaility criteria are met or not
+6. install -> install the package into the locally
+7. deploy -> deploy the software(sharing with other developers)
+
+mvn validate
+mvn package - validate, compile, test, package
+
+- if we will create package it will create target folder - we have to use clean -
+
+maven installation:
+-------------------
+
+$ sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-
+maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+
+$ sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+$ sudo yum install -y apache-maven
+$ mvn --version
+
+Creating a Project
+-------------------
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
+
+name space
+
+--------------------
+
+=> Jenkins is a web application
+
+package
+1.0 to 2.0
+
+clean package
 
 
+27. Jenkins_tomcat_integration:
+===============================
+java -jar javaname.jar
+
+jetty in-built server
+
+tomcat is web server also called as servlet container (catalina)
+
+spring boot
+
+1.apache(httpd)/nginx(reverse proxy)- it only deploy static files -> HTML,css,javascript files
+2.apache tomcat (web server)- everything we can deploy
+
+war --> deployment
+it is written in the java 
+  tomcat 7, 8, 9
+  8080 port it is running
+ 
+bin --> 
+   startup.sh  (bat file)
+   shutdonw.sh (bat file)
+
+lib -->
+	all dependencies
+	
+conf folder -->
+	server.xml
+		ports ssl(https) (8080 --> 8181)
+	tomcat-users file.xml
+		roles username and password
+		
+log folder
+
+=> In which folder we are doing to deployment in tomcat
+	it is WEBAPP folder
+	
+Manager folder
+
+-> context xml file
+    comment the "valve class" from 9 version onwards
+
+"We have install Deploy to container in jenkins to deploy to tomcat" 
 
 
+UI
+--
+java
+	core java
+	jdbc
+	servlet - back end
+	jsp - front end
+	
+	struts
+	spring
+	hibernate
+	  spring boot
+
+db
+--
+
+28. Jenkins_email_notification_upstream_downstream:
+===================================================
+https://accounts.google.com/b/0/DisplayUnlockCaptcha to unlock captcha
+
+1. username and password should be correct
+2. enable less secure app in gmail account (allow third party login)
+3. Disable captcha
+
+fail --> send notification - Build failed in Jenkins: springapp #4
+success --> nf for - Jenkins build is back to normal : springapp #5
+
+1. attachment of log file
+2. you want custom body message or subject
+3. notification for different scenario
 
 
+upstream/downstream:
+====================
+dashboard -> statistics
+------------------------
+dashboard view
+--------------
 
 
+29. Jenkins_junit_pipeline_view_petclinit_tomcat:
+==================================================
+https://stackoverflow.com/questions/5936519/how-to-give-jenkins-more-heap-space-when-it%C2%B4s-started-as-a-service-under-windows
+
+How to increase heap space in jenkins
+
+Q) Heap memory issue
+
+df -kh
+free -kh - kilobytes - human readable
+top
+
+https://stackoverflow.com/questions/31041512/jenkins-build-throwing-an-out-of-memory-error/42521447
+
+heap memory increase
+
+free -m
+
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
 
 
+method
+-------
+public int add(int a, int b){
+int result = a+b;
+
+return result;
+
+}
+
+add(10,20) --> 30
+addTest(result,30)
 
 
+whitebox test - tester will test
+blackbox streching - developer will test
+
+Junit integration
+------------------
+junit test analyzer
+
+Test Results Analyzer => plug in to view test result
 
 
-
+30. Jenkins_Nexus_Integration:
+==============================
 
 
 
