@@ -2314,33 +2314,303 @@ Test Results Analyzer => plug in to view test result
 
 30. Jenkins_Nexus_Integration:
 ==============================
+artifactory repo tools:
+-----------------------
+share lib
+today application --> 1.war --> deploy
+2. war --> deploy --> not working properly
+
+sonatype nexus --> support --> saas -> URL they will provide
+artifactory jfrog --> saas
+
+if developer is not integrated/setup/add in POM.xml we have to integrate in jenkins
+
+6 jenkins server
+
+sudo wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.16.1-02-unix.tar.gz
 
 
+https://help.sonatype.com/repomanager3/download
+
+https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+
+Nexus Platform plugin to deploy to nexus
+
+/etc/init.d/nexus start
+    2  sudo netstat -plnt
+    3  sudo cat /opt/sonatype-work/nexus3/admin.password
+    4  history
+
+[ec2-user@ip-172-31-5-91 opt]$ history
+    1  sudo yum update -y
+    2  sudo yum install java-1.8* -y
+    3  cd /opt/
+    4  sudo wget https://sonatype-
+    5  download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.16.1-02-unix.tar.gzsudo wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.16.1-02-unix.tar.gz
+    6  sudo wget https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/3/nexus-3.16.1-02-unix.tar.gz
+    7  sudo wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+    8  ll
+    9  tar -xvzf latest-unix.tar.gz
+   10  sudo tar -xvzf latest-unix.tar.gz
+   11  ll
+   12  sudo mv /opt/nexus-3.30.1-01/ /opt/nexus
+   13  ll
+   14  sudo adduser nexus
+   15  sudo passwd nexus
+   16  sudo visudo
+   17  sudo chown -R nexus:nexus /opt/nexus
+   18  sudo chown -R nexus:nexus /opt/sonatype-work
+   19  ls -ltra
+   20  sudo vi /opt/nexus/bin/nexus.rc
+   21  sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+   22  su - nexus
+
+[ec2-user@ip-172-31-2-205 ~]$ history
+    1  sudo yum install java-1.8.0 -y
+    2  sudo yum install tomcat –y
+    3  sudo yum install tomcat-webapps tomcat-docs-webapp tomcat-admin-webapps -y
+    4  cd /etc/tomcat/
+    5  ll
+    6  sudo vi tomcat-users.xml
+    7  sudo service tomcat start
+    8  sudo service tomcat status
+    9  history
+   10  cd /var/lib/jenkins/workspace/petclinic/target
+   11  cd /var/lib/jenkins/workspace/petclinic/target/
+   12  ll
+   13  cd ..
+   14  ll
+   15  cd
+   16  cd /var/lib/jenkins/workspace/petclinic/target
+   17  cd /var/lib/jenkins/workspace/
+   18  ls
+   19  cd /etc/tomcat/
+   20  ll
+   21  cd ..
+   22  ls
+   23  cd
+   24  service tomcat restart
+   25  sudo service tomcat restart
+   26  sudo service tomcat status
+   27  service tomcat status
+   28  service tomcat start
+   29  sudo service tomcat start
+   30  service tomcat status
+   31  service tomcat start
+   32  sudo service tomcat start
+   33  sudo service tomcat status
+
+docker --> nexus,private,repo,dockerhub,ecr,github
+
+31. Jenkins_sonarqube_Integration:
+==================================
+-> Code quaility testing
+-> improve the code quaility
+
+nginx,apache2,httpd tools for reverse proxy - webservers/reverseproxy/loadbalancer
+
+36c4c03b01d448e88697c438421e7812386334e3 - token for jenkins
+
+SonarQube Scanner
+
+Static code analyzer
 
 
+sonar@ip-172-31-12-212:/opt/sonar$ history
+    1  ls
+    2  cd /opt/
+    3  ll
+    4  ls -ltr
+    5  exit
+    6  /opt/sonar/bin/linux-x86-64/sonar.sh start
+    7  sudo netstat -plnt
+    8  sudo apt install net-tools
+    9  sudo netstat -plnt
+   10  cd ..
+   11  cd /opt/sonar/
+   12  ll
+   13  cd l
+   14  cd logs/
+   15  ll
+   16  sudo vi es.log
+   17  sudo vi sonar.log
+   18  sudo sysctl -w vm.max_map_count=262144
+   19  cd ..
+   20  ll
+   21  /opt/sonar/bin/linux-x86-64/sonar.sh start
+   22  sudo netstat -plnt
+   23  sudo apt-get install apache2 -y
+   24  sudo a2enmod proxy
+   25  sudo a2enmod proxy_http
+   26  sudo nano /etc/apache2/sites-available/sonar.conf
+   27  sudo a2ensite sonar
+   28  sudo systemctl restart apache2
+   29  /opt/sonar/bin/linux-x86-64/sonar.sh restart
+   30  sudo netstat -plnt
 
 
+32. Jenkins_pipeline_introduction:
+==================================
+Complexcity of your implementation
+
+"Pipeline-as-code"
+
+Declarative versus Scripted Pipeline syntax
+
+A continuous delivery (CD) pipeline is an automated expression of your process for getting software from 
+version control right through to your users and customers. Every change to your software (committed in source control) 
+goes through a complex process on its way to being released. This process involves building the software in a reliable and 
+repeatable manner, as well as progressing the built software (called a "build") through multiple stages of testing and deployment.
+
+https://www.jenkins.io/doc/book/pipeline/
+
+Script based pipeline --> old way  --> it starts with "node"
+---------------------
+node{
+	stage('getscm'){
+	git clone
+	}
+	stage('mvn build'){
+	mvn package;
+	}
+	stage('deploy'){
+	curl ...
+	}
+}
+
+declarative pipeline --> new way - faster than scripted, light weight code, easy to read --> it starts with "pipeline"
+--------------------
+pipeline{
+agent any
+stages{
+	stage('scm'){
+		steps{
+			}
+		}
+	stage('build'){
+		steps{
+			}
+		}
+	stage('deploy'){
+		steps{
+			}
+		}
+}
+}
+
+--> Two ways we written	
+	1. Jenkinsfile --> 
+	2. groovysandbox
+
+-> I want to build a multiple jobs at a time
+   jobs already created in our jenkins  (free style/pipeline)
+   
+   ipaddress
+   Hello
+   java_app
+   
+   
+pipeline {
+    agent any
+        stages{
+            stage('Build my jobs'){
+                steps{
+                    build 'Hello'
+                }
+            }
+            stage('ipaddress'){
+                steps{
+                    build 'ipaddress'
+                }
+            }
+            stage('java_app'){
+                steps{
+                    build 'java_app'
+                }
+            }
+        
+        }   
+}
+
+https://www.jenkins.io/doc/book/pipeline/
+
+33. Jenkins_sonarqube_qualitygates_master_slave:
+=================================================
+
+ubuntu@ip-172-31-12-212:~$ sudo vi /etc/apache2/sites-available/sonar.conf
+
+sonar way is default quality gate
+
+install Sonar Quality Gates plugin in jenkins
+
+sonarlint for developer side in while writing code in Eclipse editor
+
+Master-Slave
+============
 
 
+Launch method
 
+seed jobs
+shaved librarya
 
+Parameterized jobs:
+===================
 
+repo --> particular branch,particular tag to deploy
 
+34. Jenkins_git_maven_tomcat_pipeline:
+======================================
+parameterized_job
 
+install plugin - Git Parameter
 
+sh  "curl -v -u admin:admin -T /var/lib/jenkins/workspace/pipeline-project/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://3.7.70.1:8080/manager/text/deploy?path=/springapp&update=true'"
 
+withCredentials([usernamePassword(credentialsId: 'tomcat', passwordVariable: '', usernameVariable: '')]) {
+    // some block
+}
 
+withCredentials([usernameColonPassword(credentialsId: 'tomcat', variable: 'tomcatserver')]) {
+   
+}
 
+------------------
+pipeline {
+    agent any
+    
+    tools {
+        maven "maven3"
+    }
 
+     stages {
+        stage('clone') {
+            steps {
+                git credentialsId: 'git_credentials', url: 'https://github.com/bgnanesh56/spring3-mvc-maven-xml-hello-world.git'
+                }
+        }
+        stage('build'){
+            steps {
+                sh 'mvn package'
+                }
+        }
+        stage('deploy'){
+            steps{
+                withCredentials([usernameColonPassword(credentialsId: 'tomcat', variable: 'tomcatserver')]) {
+                sh  "curl -v -u tomcatserver -T /var/lib/jenkins/workspace/pipeline-project/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://3.7.70.1:8080/manager/text/deploy?path=/springapp&update=true'"
+                
+            }
+            }
+        }
+        
+        }
+            
+}
 
+---------------------
 
-
-
-
-
-
-
-
+35. Jenkins_nexus_pipeline_jenkinsfile:
+=======================================
 
 
 
