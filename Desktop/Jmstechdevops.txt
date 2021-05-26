@@ -33,7 +33,6 @@ affd 9
    15  wc
    16  uptime
    17  man
-   18  lostat
    19  iostat
    20  vmstat
    21  pwd
@@ -2730,6 +2729,538 @@ seed job
 jenkins(ci/cd pipeline)
 
 https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+ 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+           java-version: 1.8
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: tomcat deploy
+        run: curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWD }} -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://ec2-52-66-187-31.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?path=/github_action_spring'
+        
+
+38. Docker_Introduction:
+========================
+Docker is containerzation tools:
+--------------------------------
+all application dependencies --> file (Dockerfile)--> image --> run --> container 
+build (image) --> ship (store) --> run (container)
+
+new machine --> install tomcat vm ()
+vmplayer, oracle vm, virtual box (Guest OS)
+
+-> To save resources will use docker
+alpine -> one of the docker flavour --> 5MB
+
+small container
+
+=> what is the difference between vm and docker
+
+Docker CLI(docker build)  --> Docker Deamon (images, containers)--> Docker repository (store docker images)
+																	Nexus, Docker hub, ECR, private repo
+																	
+symlink means softlink
+
+   1  docker info
+    2  docker images
+    3  docker info
+    4  docker search ubuntu
+    5  docker -v
+    6  docker search ubuntu
+    7  docker pull ubuntu
+    8  docker images
+    9  docker pull ubuntu:21.04
+   10  docker images
+   11  dokcer search alphine
+   12  docker search alphine
+   13  docker search alpine
+   14  docker pull alpine
+   15  docker images
+   16  docker run -it ubuntu
+   17  docker ps
+   18  docket commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   19  docker commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   20  dokcer images
+   21  docker images
+   22  docker ps
+   23  docker stop 32728f205944
+   24  dokcer ps
+   25  docker images
+   26  dokcer ps -a
+   27  docker ps -a
+   28  docker ps -l
+   29  docker ps -q
+   30  docker ps -aq
+   31  docker ps -a
+   32  docker em 32728f205944
+   33  docker rm 32728f205944
+   34  dokcer ps
+   35  docker ps ps
+   36  docker ps
+   37  docker images
+   38  history
+   39  docker images
+   40  docker run -d --name myubuntu ubuntu
+   41  docker ps
+   42  docker ps -a
+   43*
+   44  docker ps -a
+   45  docker em -f a6dcdf68ff6d a9384c1496c4
+   46  docker rm -f a6dcdf68ff6d a9384c1496c4
+   47  docker images
+   48  docker run -it --name myubunut ubuntu
+   49  docker ps
+   50  docker run -it --name myfigletubunut figlet_ubuntu
+   51  docker ps
+
+39. Docker_hands_on_commands:
+=============================
+How to build a custom web applications
+
+docker images - AWS account
+
+Machine test
+------------
+to set up a three machines
+
+1. load balancer
+2.3 containers and if one container down another should get hit
+
+0.0.0.0:49153->80/tcp
+
+0.0.0.0:49153 => Host port
+80/tcp => container port
+
+
+Docker Hub
+ECR
+NEXUS
+Jfrog
+own private repo
+
+ 1  docker --version
+    2  sudo yum install docker -y
+    3  sudo service docker status
+    4  sudo service docker start
+    5  sudo service docker status
+    6  docker images
+    7  sudo docker images
+    8  docker --version
+    9  sudo docker info
+   10  sudo usermod -a -G docker ec2-user
+   11  sudo systemctl enable docker
+   12  docker info
+   13  docker images
+   14  docker info
+   15  docker search ubuntu
+   16  docker -v
+   17  docker search ubuntu
+   18  docker pull ubuntu
+   19  docker images
+   20  docker pull ubuntu:21.04
+   21  docker images
+   22  dokcer search alphine
+   23  docker search alphine
+   24  docker search alpine
+   25  docker pull alpine
+   26  docker images
+   27  docker run -it ubuntu
+   28  docker ps
+   29  docket commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   30  docker commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   31  dokcer images
+   32  docker images
+   33  docker ps
+   34  docker stop 32728f205944
+   35  dokcer ps
+   36  docker images
+   37  dokcer ps -a
+   38  docker ps -a
+   39  docker ps -l
+   40  docker ps -q
+   41  docker ps -aq
+   42  docker ps -a
+   43  docker em 32728f205944
+   44  docker rm 32728f205944
+   45  dokcer ps
+   46  docker ps ps
+   47  docker ps
+   48  docker images
+   49  history
+   50  docker images
+   51  docker run -d --name myubuntu ubuntu
+   52  docker ps
+   53  docker ps -a
+   54  docker ps -a
+   55  docker em -f a6dcdf68ff6d a9384c1496c4
+   56  docker rm -f a6dcdf68ff6d a9384c1496c4
+   57  docker images
+   58  docker run -it --name myubunut ubuntu
+   59  docker ps
+   60  docker run -it --name myfigletubunut figlet_ubuntu
+   61  docker ps
+   62  history
+   63  sudo vi names.sh
+   64  sh names.sh
+   65  chmod a+x name.sh
+   66  sudo chmod a+x name.sh
+   67  sudo chmod a+x names.sh
+   68  ./name.sh Hans-Wolfgang Loidl
+   69  ./names.sh Hans-Wolfgang Loidl
+   70  docker -v
+   71  docker images
+   72  docker ps
+   73  docker ps -a
+   74  docker stop 79c56ff29b24 7664ac932849
+   75  docker ps
+   76  docker ps -a
+   77  docker rm ${docker ps -aq}
+   78  docker ps -a
+   79  docker rm ${docker ps -aq}
+   80  docker ps -a
+   81  docker rm 79c56ff29b24 7664ac932849
+   82  docker ps -a
+   83  docker ps
+   84  docker images
+   85  docker search clock
+   86  docker pull jpetazzo/clock
+   87  docker images
+   88  docker run -d --name clock jpetazzo/clock
+   89  docker ps
+   90  docker logs 0e44a6c45111
+   91  docker ps
+   92  dokcer logs -f --tail 10
+   93  docker logs -f --tail 10 0e44a6c45111
+   94  docker pull tutum/hello-world
+   95  docker images
+   96  docker run -d --name webapp tutum/hello-world
+   97  docker ps
+   98  docker run -d -p 80 --name webapp1 tutum/hello-world
+   99  docker ps
+  100  docker run -d -p 80:80 --name webapp2 tutum/hello-world
+  101  docker ps
+  102  docker run -d -p 8081:80 --name webapp3 tutum/hello-world
+  103  docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk11
+  104  docker images
+  105  docker tag figlet_ubuntu gnaneshb/figlet_ubuntu
+  106  docker images
+  107  docker push gnaneshb/figlet_ubuntu
+  108  docker login
+  109  cat /home/ec2-user/.docker/config.json
+  110  docker push gnaneshb/figlet_ubuntu
+  111  docker ps
+  112  docker images
+  113  docker stop cde0f15be36f  4c1a8879bbad  6723ec0e9e17  5dbaed43e661 0e44a6c45111
+  114  docker ps
+  115  docker ps -a
+  116  docker images
+  117  docker rmi b824d1872ac2 274cadba4412  9d90b56f1a78 7e0aa2d69a15 6dbb9cc54074 7a8965d6553e 31e17b0746e4
+  118  docker images
+  119  docker rmi -f b824d1872ac2 9d90b56f1a78 7e0aa2d69a15 7a8965d6553e 31e17b0746e4
+  120  docker images
+  121  docker ps
+  122  docker ps -a
+
+ 1  docker --version
+    2  sudo yum install docker -y
+    3  sudo service docker status
+    4  sudo service docker start
+    5  sudo service docker status
+    6  docker images
+    7  sudo docker images
+    8  docker --version
+    9  sudo docker info
+   10  sudo usermod -a -G docker ec2-user
+   11  sudo systemctl enable docker
+   12  docker info
+   13  docker images
+   14  docker info
+   15  docker search ubuntu
+   16  docker -v
+   17  docker search ubuntu
+   18  docker pull ubuntu
+   19  docker images
+   20  docker pull ubuntu:21.04
+   21  docker images
+   22  dokcer search alphine
+   23  docker search alphine
+   24  docker search alpine
+   25  docker pull alpine
+   26  docker images
+   27  docker run -it ubuntu
+   28  docker ps
+   29  docket commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   30  docker commit -m "new image with ubunut figlet" 32728f205944 figlet_ubuntu
+   31  dokcer images
+   32  docker images
+   33  docker ps
+   34  docker stop 32728f205944
+   35  dokcer ps
+   36  docker images
+   37  dokcer ps -a
+   38  docker ps -a
+   39  docker ps -l
+   40  docker ps -q
+   41  docker ps -aq
+   42  docker ps -a
+   43  docker em 32728f205944
+   44  docker rm 32728f205944
+   45  dokcer ps
+   46  docker ps ps
+   47  docker ps
+   48  docker images
+   49  history
+   50  docker images
+   51  docker run -d --name myubuntu ubuntu
+   52  docker ps
+   53  docker ps -a
+   54  docker ps -a
+   55  docker em -f a6dcdf68ff6d a9384c1496c4
+   56  docker rm -f a6dcdf68ff6d a9384c1496c4
+   57  docker images
+   58  docker run -it --name myubunut ubuntu
+   59  docker ps
+   60  docker run -it --name myfigletubunut figlet_ubuntu
+   61  docker ps
+   62  history
+   63  sudo vi names.sh
+   64  sh names.sh
+   65  chmod a+x name.sh
+   66  sudo chmod a+x name.sh
+   67  sudo chmod a+x names.sh
+   68  ./name.sh Hans-Wolfgang Loidl
+   69  ./names.sh Hans-Wolfgang Loidl
+   70  docker ps
+   71  docker exec -it 733d03c8625f /bin/bash
+
+
+Docker file
+-----------
+FROM
+CMD
+ENTRYPOINT
+EXPOSE
+VOLUME
+ADD
+COPY
+LABEL
+WORKDIR
+RUN
+HEALTHCHECK
+ONBUILD
+USER
+ENV
+ARG
+
+40. Docker_Dockerfile_creation_build:
+=====================================
+ HelloWorld.java
+ class HelloWorld
+ 
+public static void main() {
+sopln("devops course")
+}
+
+javac HelloWorld.java
+java HelloWorld
+
+Pre-requisites:
+---------------
+OS
+JDK
+code
+execution
+
+CMD and ENTRYPOINT will execute while running docker file
+Remaining commands will execute while building docker file
+
+FROM openjdk:8
+LABEL bgnanesh6@gmail.com
+COPY HelloWorld.java HelloWorld.java
+RUN javac HelloWorld.java
+CMD java HelloWorld
+
+MAITAINER -- LABEL
+
+---> Using cache  == Reusable of cache
+
+How to build without cache:
+---------------------------
+[ec2-user@ip-172-31-43-26 java_app]$ docker build --no-cache=true -t  myjava-alpine:v3 .
+
+tomcat ->
+
+war (tomcat docker container)
+
+OS
+java
+tomcat
+code
+execution
+
+
+It is console level application
+It is not web applications
+
+1. How to optimize your docker file
+A)- Choose light weight base image first
+- 
+
+
+2 forms
+1. shell form
+2. exec ["java","HelloWorld"]
+
+
+FROM tomcat:8.0.20-jre8
+WORKDIR /usr/local/tomcat/webapps/
+COPY spring3.war /usr/local/tomcat/webapps/spring3.war
+
+
+docker build -t webapp:v1 -t ybmsr/webapps:v1 .
+
+context path => /usr/local/tomcat/webapps/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
