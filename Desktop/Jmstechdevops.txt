@@ -3147,10 +3147,77 @@ docker build -t webapp:v1 -t ybmsr/webapps:v1 .
 context path => /usr/local/tomcat/webapps/
 
 
+41. Docker_Dockerfile_nodeapp_build:
+=====================================
+nodejs project:
+---------------
+npm node
+--------
+
+OS
+node
+npm
+http-server
+port
+copy
+start http server
+
+node http server install
+
+two OS
+------
+ubuntu
+alpine
+
+HOW to install npm http-server:
+-------------------------------
+https://www.npmjs.com/package/http-server
 
 
+FROM ubuntu
+LABEL gnanesh<bgnanesh6@gmail.com>
+WORKDIR /usr/apps/hello-docker/
+RUN apt-get -y update
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN npm install -g http-server
+ADD . /usr/apps/hello-docker/
+EXPOSE 8080
+#ADD index.html /usr/apps/hello-docker/.index.html
+CMD ["http-server","-s"]   # S means donot print the logs
 
 
+java 
+ spring boot
+ code --> dev --> jar (executable) --> port
+ java -jar jarfilename.jar
+ 
+ docker run -p 8181:8080
+ 
+-> port forwarding to access application
+ 
+host port - access external
+container port - access docker port internally - internally container running port
+
+Best practices for writing Dockerfiles how to reduce the size  of the docker image:
+-----------------------------------------------------------------------------------
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+
+check the below folder to see the docker info in root
+
+ /var/lib/docker/
+
+docker stats
+
+to check which container is using more space
+--------------------------------------------
+[root@ip-172-31-43-26 overlay2]# docker stats
+CONTAINER ID   NAME         CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O   PIDS
+8cb2c9bb4d96   nodealpine   0.00%     13.73MiB / 983.3MiB   1.40%     3.07kB / 4.43kB   0B / 0B     10
+
+
+jar 
+property file
 
 
 
