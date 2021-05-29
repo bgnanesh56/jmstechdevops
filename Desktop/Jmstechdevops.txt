@@ -3220,18 +3220,124 @@ jar
 property file
 
 
+Postgre SQL Properties:
+=======================
+postgres.jdbc.url=jdbc:postgresql://hostname:port/postgres
+postgres.jdbc.username=username
+postgres.jdbc.password=userpassword
 
 
+42. Docker_ADD_vs_COPY_and_RUN_CMD_ENTRYPOINT:
+==============================================
+RUN vs CMD vs ENTRYPOINT
+ADD vs COPY
+
+Dockerfile - set of instructions/dependencies/libraries to run applications
+
+ADD vs COPY:
+------------
+Host machine to container
+Do not use ADD command 
+ADD -> It gives more feature
+   tar(local file) --> move/copy tar image and it will extracted
+   Host machine --> image It can be used for remote location also (internet)
+ADD sample.tar /tmp
 
 
+COPY :
+  simply copy the files
+  copy files from a previous build stage in a multi-stage build.
+
+Assignment:
+-----------
+nodejs 
+implement for multistage builds
+----
+
+RUN vs CMD vs ENTRYPOINT:
+=========================
+
+RUN ==> While building image it executes
+CMD and ENTRYPOINT ==> It executes while running container
+
+CMD vs ENTRYPOINT:
+------------------
+It has two forms
+
+1. Shell form
+
+	RUN apt install wget .... -ybmsr/webapps
+	
+2. Executable form
+
+	RUN ["apt","install","wget","-y"]
+
+CMD --> Parameters we can override while running container
+ENTRYPOINT --> Parameters we can not override while running container
+
+Dockerfile 
+
+We will prefer EXEC form only not for shell form
+
+CMD
+CMD
+CMD
+CMD
+
+-> what CMD will excute first
+A. Final CMD will take input while executing
+-> In docker file only one ENTRYPOINT allow, it won't allow multiple
+
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$ cat Dockerfile
+FROM ubuntu
+RUN apt-get update -y
+ENV name madhu sudhan
+#ENTRYPOINT echo "Hello, $name"
+#ENTRYPOINT ["echo", "Hello ,$name"]
+ENTRYPOINT ["/bin/bash", "-c", "echo Hello, $name"]
+
+but when container runs with a command, e.g., docker run -it <image> /bin/bash, CMD is
+ignored and bash interpreter runs instead:
+$ docker run -it test4 /bin/bash
+root@7de4bed89922:/#
 
 
+Entire command we can override but parameter we can not override in ENTRYPOINT
+
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$ cat Dockerfile
+FROM ubuntu
+RUN apt-get update -y
+ENTRYPOINT ["/bin/echo", "Hello"]
+CMD ["world"]
+
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$ docker run -it --entrypoint "/bin/echo" test5 madhu
+madhu
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$ docker run -it --entrypoint "/bin/echo" test5
+
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$ docker run -it --entrypoint "/bin/echo" test5 Mahesh
+Mahesh
+[ec2-user@ip-172-31-43-26 run_cmd_entry]$
+
+43. Docker_ONBUILD_HEALTHCHECK_Machinetest:
+===========================================
+ONBUILD - it will not execute on that build it will execute on the other build where it is triggered 
+
+Q) How do you know you application is health/running or not?
 
 
+python app.py
+python <file name> to execute python programme
 
 
-
-
+[ec2-user@ip-172-31-43-26 health]$ cat Dockerfile
+FROM python:3.6-alpine
+RUN apk add --update bash
+RUN apk add --update curl
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
+CMD ["python", "app.py"]
 
 
 
