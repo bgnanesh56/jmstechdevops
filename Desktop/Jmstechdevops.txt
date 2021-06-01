@@ -3340,11 +3340,90 @@ HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
 CMD ["python", "app.py"]
 
 
+44. Docker_volumes:
+===================
+containers --> emphemerial
+
+Host
+	container
+	Docker area -> where the docker is installed
+					/var/lib/docker/
+
+Bind mount Volume 
+
+ "Mountpoint": "/var/lib/docker/volumes/mydata/_data", ===> The volume will be store here
+ 
+==> Properties file reuse
 
 
+4. Sharing Data Between Multiple Docker Containers.
+---------------------------------------------------
+[ec2-user@ip-172-31-43-26 ~]$ docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
+
+Q) Can we limit the size of the docker volume
 
 
+45. Docker_nginx_load_balancer_and_ --link:
+===========================================
+To link a multiple containers ==> --link
 
+docker run -d --name mysqlwp -e MYSQL_ROOT_PASSWORD=wordpressdocker mysql mysqld --default-authentication-plugin=mysql_native_password
+
+docker run --name wordpress --link mysqlwp:mysql -p 80:80 \ -e WORDPRESS_DB_NAME=wordpress \
+
+docker run --name wordpress --link mysqlwp:mysql -p 80:80 \
+-e WORDPRESS_DB_NAME=wordpress \
+-e WORDPRESS_DB_USER=wordpress \
+-e WORDPRESS_DB_PASSWORD=wordpresspwd \
+-d wordpress
+
+Create 3 ubuntu server ->
+	1. loadbalancer
+		2 & 3 same container - same application
+		
+=> Install Docker using Ansible
+
+[ec2-user@ip-172-31-43-26 ~]$ sudo nginx -t
+
+algoritham
+----------
+round robin 
+
+Freenom - to register domains
+
+
+46. Docker_private_registry:
+============================
+zeal vora ==> NGINX udemy course
+
+docker private repo
+nexus docker private repo
+jenkins dokcer integration
+	freestyle
+	pipeline
+	multiconfig jobs
+	ecr
+	
+ECR repo
+
+https://docs.docker.com/registry/deploying/
+
+docker image --> registry
+
+docker run -d \ -p 5000:5000 \ --restart=always \ --name registry \ -v /mnt/registry:/var/lib/registry \ registry:2
+
+get the list of images in my private registry.
+$ curl -X GET http://localhost:5000/v2/_catalog
+
+If you want get the all tags form a particular image.
+curl -X GET http://localhost:5000/v2/my-ubuntu/tags/list
+
+Daily activities:
+-----------------
+- jenkins down sometime
+- Disk space more
+- Agents are not able spin up
+- JVM disk is full
 
 
 
