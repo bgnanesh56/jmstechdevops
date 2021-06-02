@@ -2363,6 +2363,7 @@ Nexus Platform plugin to deploy to nexus
    20  sudo vi /opt/nexus/bin/nexus.rc
    21  sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
    22  su - nexus
+   
 
 [ec2-user@ip-172-31-2-205 ~]$ history
     1  sudo yum install java-1.8.0 -y
@@ -3424,6 +3425,47 @@ Daily activities:
 - Disk space more
 - Agents are not able spin up
 - JVM disk is full
+
+
+47. Docker_repo_nexus_ecr:
+==========================
+  579  docker --version
+  580  docker pull ubuntu
+  581  docker pull docker pull gnaneshb/figlet_ubuntu
+  582  docker pull gnaneshb/figlet_ubuntu
+  583  docker images
+  584  docker tag gnaneshb/figlet_ubuntu 13.232.17.113:8082/gnaneshb/figlet_ubuntu
+  585  docker login -u admin -p admin 13.232.17.113:8082
+  586  sudo vi /etc/docker/daemon.json
+  587  docker login -u admin -p admin 13.232.17.113:8082
+  588  sudo service docker restart
+  589  docker login -u admin -p admin 13.232.17.113:8082
+  590  docker push 13.232.17.113:8082/gnaneshb/figlet_ubuntu
+  591  docker images
+
+
+Push docker images to ECR(Elastic Container Registry) repo:
+===========================================================
+docker system prune
+
+Q) How to run docker inside docker
+A) Docker dind image
+
+
+Asignment:
+----------
+
+Install jenkins with docker
+java application docker build image
+
+Custom docker file:
+----------------------
+with jenkins
+docker
+build your own jenkins image
+
+48. Docker_Jenkins_Integration:
+===============================
 
 
 
