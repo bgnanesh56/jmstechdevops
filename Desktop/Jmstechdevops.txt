@@ -3464,19 +3464,29 @@ with jenkins
 docker
 build your own jenkins image
 
+How to secure docker images
+---------------------------
+- Docker twistlock tool
+- maintain private repo with proper SSL
+
 48. Docker_Jenkins_Integration:
 ===============================
+[ec2-user@ip-172-31-43-26 ~]$ docker run -d -p 8080:8080 -p 50000:50000 -u root -v /Jenkins_home:/var/jenkins_home jenkins/jenkins:lts
+
+Dockerfile
+
+FROM jenkins/jennkins:lts
 
 
+docker run --restart=always -d -p 8080:8080 -p 50000:50000 -u root -v /Jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins:lts
 
+docker run -d --restart=always -u root -p 8080:8080 -p 50000:50000 -v /Jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins:lts
 
+docker run -d --restart=always -u root -p 8080:8080 -p 50000:50000 -v /Jenkins_home:/var/jenkins_home -v $(which docker):/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v /home/ec2-user/.docker/config.json:/root/.docker/config.json --name jenkins jenkins/jenkins:lts
 
-
-
-
-
-
-
+	
+Docker Pipeline - plugin	
+CloudBees Docker Build and Publish - plugin
 
 
 
