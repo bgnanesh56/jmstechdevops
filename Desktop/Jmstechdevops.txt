@@ -3489,7 +3489,11 @@ Docker Pipeline - plugin
 CloudBees Docker Build and Publish - plugin
 
 
+49. Docker_jenkins_ecr_pipeline:
+================================
+Each micro service we will create a one repo in ECR
 
+Amazon ECR - plugin in jenkins
 
 
 
