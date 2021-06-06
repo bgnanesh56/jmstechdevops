@@ -3495,13 +3495,144 @@ Each micro service we will create a one repo in ECR
 
 Amazon ECR - plugin in jenkins
 
+50. Docker_docker-compose:
+==========================
+same repo multiple docker file
+if you want to run multiple container at a time
+
+It will create it own network and will run in same container
+
+Docker will run in "Bridge network" by default
+
+
+docker compose and docker version comparison
+-------------------------------------------
+
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+python flask will run on 5000 port
+
+Docker clean up process:
+------------------------
+=> None images are dangling images -> if we will create same image two versions
+
+occupied our space
+
+[ec2-user@ip-172-31-43-26 composetest]$ docker image prune -a
+WARNING! This will remove all images without at least one container associated to them.
+
+[ec2-user@ip-172-31-43-26 composetest]$ docker image prune -a --filter "until=24h"
+WARNING! This will remove all images without at least one container associated to them.
+
+[ec2-user@ip-172-31-43-26 composetest]$ docker container prune
+WARNING! This will remove all stopped containers.
+
+[ec2-user@ip-172-31-43-26 composetest]$ docker container prune --filter "until=24h"
+WARNING! This will remove all stopped containers.
+
+[ec2-user@ip-172-31-43-26 composetest]$ docker system prune
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
+
+Q) what is save and load in docker?
+-----------------------------------
+I have ec2 instance docker build is happening
+Manually how to share
+
+Save and load
+Import and Export 
+
+51. Docker_networking:
+======================
+[ec2-user@ip-172-31-43-26 ~]$ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+db2f7d8aa886   bridge    bridge    local
+96aab7e7b0c5   host      host      local
+abecf6c0727c   none      null      local
+
+Bridge -> we have to provide port forwarding -> we have specify the outside access prot
+Host -> Same port we can use to access ourside --> mainly we will use in docker-compose
+none -> just run the container and test something
+
+$docker network create mynetwork --subnet=10.0.0.1/16 --gateway=10.0.10.100
+$docker network ls
+
+
+52. Docker Interview questions:
+-------------------------------
+A1) rap and build and run anyware in light weight resources
+2A) Noneed to store - Guest OS
+-> kill will do immediatley, stop will take some time to stop it 10sec normally
+-> docker attach command to login to running container
+-> docker ps -l --> latest container
+-> -p => publish port/list
+-> label --> version of the tag
+-> docker tag we will use to create new image on existing image
+-> properties file using file of the database
+   --link and docker compose
+PID is same in attach
+exec will create new PID
+
+https://stackoverflow.com/questions/30960686/difference-between-docker-attach-and-docker-exec
+
+When a container is started using /bin/bash then it becomes the containers PID 1 and docker attach is used to get inside PID 1 of a container. So docker attach < container-id > will take you inside the bash terminal as it's PID 1 as we mentioned while starting the container. Exiting out from the container will stop the container.
+
+Whereas in docker exec command you can specify which shell you want to enter into. It will not take you to PID 1 of the container. It will create a new process for bash. docker exec -it < container-id > bash. Exiting out from the container will not stop the container.
+
+You can also use nsenter to enter inside containers. nsenter -m -u -n -p -i -t < pid of container > You can find PID of container using: docker inspect < container-id > | grep PID
+
+Note: If you have started your container with -d flag then exiting out of container will not stop the container,whether you use attach or exec to get inside.
+
+
+53. Ansible_introduction:
+=========================
+Configuration management tools:
+-------------------------------
+Ansible --> python --> yaml
+Chef --> rubby
+puppet
+saltstack
+cfengine
+---------
+It is interpreter language - no compilation -  inbuilt open ssh   
+Iac - Infrastructure as a code - 
+Ansible is working as push based mechanism - it is agent less - Easy to write no need of any language
+Chef is working as pull based mechanism - agent mechanism - Ruby is required
+puppet - Ruby
+Provisiong - through playbook we create infrasture
+Terraform create a server, ansible install softwares
+
+
+Ansible Terminology:
+--------------------
+ansible host
+nodes
+modules
+roles
+tasks
+inventory
+playbook
+ansible galaxy
+ansible vault
+ansible tags
+ansible tower
+ansible ad-hoc commands
+Simple:
+--------
+Key-based authentication
+
+password less based:
+--------------------
 
 
 
 
 
-
-
+   
 
 
 
