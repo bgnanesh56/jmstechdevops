@@ -3628,6 +3628,140 @@ Key-based authentication
 password less based:
 --------------------
 
+54. Ansible_ad_hoc_commands:
+============================
+ping
+copy
+setup
+command
+become
+shell - if we want to do more than one operation
+file
+LineInFile
+
+
+
+anible playbook build and deploy to tomcat
+
+[root@ip-172-31-40-139 ansible]# ansible -m ping node
+[root@ip-172-31-40-139 ansible]# ansible -m ping 'node:!172.31.35.237'
+[root@ip-172-31-40-139 ansible]# ansible -m setup server    => ful information of node details
+$ ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user'
+ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user mode=400'
+ansible node -m commad -a "df -kh" --> disk utilization
+[root@ip-172-31-40-139 ansible]# ansible node -m command --become -a "ifconfig"
+[root@ip-172-31-40-139 ansible]# ansible node -m shell -a "df && free"
+ansible node -m file -a 'dest=/home/ec2-user/node.txt mode=600 owner=madhu group=madhu'
+[root@ip-172-31-40-139 ansible]# ansible node -m file -a 'dest=/home/ec2-user/node.txt state=touch'
+[root@ip-172-31-40-139 ansible]# ansible node -m file -a 'dest=/home/ec2-user/weekend state=directory'
+ansible 192.168.141.215 -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy" '
+[root@ip-172-31-40-139 ansible]# ansible node -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy"'
+[root@ip-172-31-40-139 ansible]# ansible node -m shell -a "cat node.txt"
+[root@ip-172-31-40-139 ansible]# ansible node -m yum --become -a 'name=httpd state=present'
+[root@ip-172-31-40-139 ansible]# ansible node -m service --become -a 'name=httpd state=started'
+
+Playbooks:
+----------
+---
+- hosts:
+
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: Ansible create file if it does not exist example
+    file:
+      path: "/home/ec2-user/gani.txt"
+      state: touch
+  - name: copy content
+    yum:
+      name: git
+      state: present
+	  
+------------------------------------
+55. Ansible_playbook_tags:
+==========================
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: Ansible create file if it does not exist example
+    copy:
+      dest: "/home/ec2-user/gani.txt"
+      content: |
+	     this is first line
+		 this is second line
+		 this is third line
+
+[root@ip-172-31-40-139 ansible]# ansible-playbook -vvv write_content_file.yaml
+
+loops
+
+
+Ansible Tags
+=============
+For all tasks we will provide tag, we will use the tag to exclude a particular tasks
+
+--tags [install, uninstall, untar, copywar]
+--skip-tags[install,untar....]
+- ignore
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
