@@ -3707,7 +3707,21 @@ For all tasks we will provide tag, we will use the tag to exclude a particular t
 - ignore
 
 
+56.1 Ansible_maven_playbook_roles:
+==================================
+How to deploy the war file
 
+--> git
+--> maven
+--> tomcat
+
+Ansible Roles:
+==============
+Roles are using for reusable purpose
+
+56.2 Ansible_role_tomcat_playboook:
+===================================
+Ansible-galaxy
 
 
 

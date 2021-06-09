@@ -1,0 +1,45 @@
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: Ansible create file if it does not exist example
+    file:
+      path: "/home/ec2-user/gani.txt"
+      state: touch
+  - name: copy content
+    yum:
+      name: git
+      state: present
+  
+  
+ ---
+- hosts:
+
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: Ansible create file if it does not exist example
+    file:
+      path: "/home/ec2-user/{{ item }}"
+      state: touch
+    with_items:
+    - access.log
+    - system.log
+    - properties.txt
+    - confile.cfg
+  
+
+---
+- hosts: node
+  become: yes
+  tasks:
+  - name: Ansible create file if it does not exist example
+    file:
+      path: "/home/ec2-user/{{ item.location }}"
+      state: touch
+      mode: "/home/ec2-user/{{ item.mode }}"
+    with_items:
+    - { location: "file1.txt",mode: "0566" }
+    - { location: "file2.txt",mode: "0766" }
+    
