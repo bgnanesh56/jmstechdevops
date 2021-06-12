@@ -43,3 +43,95 @@
     - { location: "file1.txt",mode: "0566" }
     - { location: "file2.txt",mode: "0766" }
     
+
+---
+- hosts: node
+  become: yes
+  tasks:
+   - name: install maven
+    yum:
+      name: maven
+      state: present
+      
+------------------------------------------
+
+---
+- hosts: node
+  become: yes
+  tasks:
+   - name: download maven and install
+     shell: |
+      wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O
+      /etc/yum.repos.d/epel-apache-maven.repo
+      sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+      yum install -y apache-maven
+      
+      
+
+
+   - name: download maven and install
+     shell: |
+      wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O
+      /etc/yum.repos.d/epel-apache-maven.repo
+      sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+      yum install -y apache-maven
+
+--------------------------------
+
+- hosts: node
+  become: yes
+  tasks:
+  - name: install git
+    yum:
+      name: git
+      state: present
+      
+      
+---------------------------------------------
+
+---
+- hosts: nodes
+become: yes
+tasks:
+- name: get the source code
+git:
+repo: 'https://github.com/ybmadhu/spring3-mvc-maven-xml-hello-world.git'
+dest: /home/mylogin/hello
+tags: git_download
+- name: packing the maven build
+shell: " mvn clean package "
+args:
+chdir: /home/mylogin/hello
+- name: copy artifacts to tomcat
+copy:
+src: /home/mylogin/hello/target/spring3-mvc-maven-xml-hello-world-1.2.war
+dest: /opt/apache-tomcat-8.5.66/webapps/
+remote_src: true
+
+---------------------------------
+
+---
+- name: Print linux distribution and version
+ become: root
+ hosts: nodes
+ tasks:
+ - name: capture output of id command
+ command: cat /etc/os-release
+ register: login
+ - debug:
+ msg: "{{ login.stdout }}"
+Madhu Sudhan Reddy Y.B JMSTechHome +91-8884807341
+ - debug:
+ msg: version comaparision "{{ ansible_distribution_version is version('7.0','>=') }}"
+ - name: Sending an e-mail using Gmail SMTP servers
+ mail:
+ host: smtp.gmail.com
+ port: 587
+ secure: starttls
+ charset: utf-8
+ sender: ballalallallal
+ username: ballalallallal
+ password: ballalallallal
+ to: ballalallallal
+ subject: Ansible-report
+ body: veresion comparision "{{ ansible_distribution_version is version('7', '>=') }}"

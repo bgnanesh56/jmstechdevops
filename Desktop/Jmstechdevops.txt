@@ -3723,6 +3723,134 @@ Roles are using for reusable purpose
 ===================================
 Ansible-galaxy
 
+57. Ansible_end_to_end_deployment_and_vault:
+============================================
+=> git source code -> build -> source code -> deploy app
+
+slaves
+Docker slaves
+K8s pod as slaves
+
+nodes:
+------
+OS
+git
+maven
+java
+tomcat
+
+1. system status check
+2. Instance status check
+
+[root@ip-172-31-40-139 ansible]# cat end_to_end_deploy.yaml
+---
+ - hosts: node
+   become: yes
+   tasks:
+    - name: get the source code
+      git:
+       repo: 'https://github.com/ybmadhu/spring3-mvc-maven-xml-hello-world.git'
+       dest: /home/mylogin/hello
+      tags: git_download
+    - name: packing the maven build
+      shell: " mvn clean package "
+      args:
+       chdir: /home/mylogin/hello
+    - name: copy artifacts to tomcat
+      copy:
+       src: /home/mylogin/hello/target/spring3-mvc-maven-xml-hello-world-1.2.war
+       dest: /opt/apache-tomcat-8.5.66/webapps/
+       remote_src: true
+
+
+Ansible-vault:
+--------------
+[root@ip-172-31-40-139 ansible]# ansible-vault create myfile.yml
+New Vault password:
+Confirm New Vault password:
+
+[root@ip-172-31-40-139 ansible]# ansible-playbook --ask-vault myfile.yml
+
+[root@ip-172-31-40-139 ansible]# ansible-vault encrypt mahesh.txt
+New Vault password:
+Confirm New Vault password:
+Encryption successful
+
+[root@ip-172-31-40-139 ansible]# cat mahesh.txt
+$ANSIBLE_VAULT;1.1;AES256
+
+[root@ip-172-31-40-139 ansible]# ansible-vault view mahesh.txt
+Vault password:
+This is vault purpose
+
+[root@ip-172-31-40-139 ansible]# ansible-vault view mahesh.txt
+Vault password:
+This is vault purpose
+
+[root@ip-172-31-40-139 ansible]# ansible-vault rekey mahesh.txt
+Vault password:
+New Vault password:
+Confirm New Vault password:
+Rekey successful
+
+[root@ip-172-31-40-139 ansible]# ansible-vault decrypt mahesh.txt
+Vault password:
+Decryption successful
+
+[root@ip-172-31-40-139 ansible]# ansible-vault edit mahesh.txt
+
+Debug module:
+-------------
+$ ansible-playbook vault_example.yml --vault-id @prompt --private-key=tomcat.pem
+Here it will ask your vault password you need to enter your password.
+Then check output.
+
+Declare and how to use variable in playbook:
+--------------------------------------------
+
+Q) get the version installed version and send mail
+
+
+Infrastructure as a code using Ansible
+
+Q) encrypt the data in ansible
+
+Hashing mechanism to encrypt the code - mainly for python Hashing mechanism is there
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
