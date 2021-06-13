@@ -3817,7 +3817,50 @@ Q) encrypt the data in ansible
 
 Hashing mechanism to encrypt the code - mainly for python Hashing mechanism is there
 
+58. Ansible_handlers_infrastucture_provisioning:
+================================================
+somthing is modified in config file server has to restart service automatically we will use handlers
 
+ ignore_errors: yes
+
+custom hosts:
+-------------
+[root@ip-172-31-40-139 ansible]# ansible-playbook -i web install_nginx.yml
+
+IaC -> Infrastructure as Code
+
+---
+# tasks file for key
+-   name: Create an EC2 key
+    ec2_key:
+        name: "jms-key-3"
+        region: ap-south-1
+    register: ec2_key
+
+-   name: save private key
+    copy: content="{{ ec2_key.key.private_key }}" dest="./jms-key-3.pem" mode=0600
+    when: ec2_key.changed
+
+
+--> register: ec2_key = The register is stores the output of the above module 
+
+console
+aws-cli
+sdk - python,boto,boto3
+cloudformation
+ansible
+terraform
+
+when condition
+
+anisble registered variables - search in google
+--------------------------------------------------------------
+59. Ansible_passwordless_setup:
+===============================
+How to create 10 users using ansible playbook
+
+60. Ansible_interview questions:
+================================
 
 
 
