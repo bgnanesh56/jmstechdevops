@@ -3861,12 +3861,491 @@ How to create 10 users using ansible playbook
 
 60. Ansible_interview questions:
 ================================
+1. what is ansible?
+Ansible is a configuration management tool, chef, puppet, saltstack
+2. what is difference between ansible and chef?
+Ansible is agent less - Chef is agent based config tool
+it is push based 
+it has inbuilt ssh - chef need to install open ssh
+it is python based tool
+
+3. i want to create users in my machine which is the most faster tool i.e ansible or chef or puppet?
+It is written in python, it is interpreter language. it is faster to execute playbook
+it is push based mechanism
+
+4. what is loop in ansible ?
+items
+with_items
+
+Please check change logs for new version upgradtions
 
 
+5. how to read the variables in playbooks ? 
+{{ username }}
+
+6. how to expose passwords in playbooks? 
+--> encryption -->vault
+
+ansible-valut -encrypt <file name>
+
+7. any other options other than vault? 
+--> python hashing --> ""AES256 algorithm""
+
+Using ansible vault, you can encrypt and decrypt files and variables and later use them in your playbook or role. 
+Ansible encrypts your file using ""AES256 algorithm"". Ansible vault supports vault id and password. 
+A vault ID is an identifier for one or more vault secrets; Ansible supports multiple vault passwords.
+
+8. how to get the gather facts?
+set module in adhoc command
+To access the variables from Ansible facts in the Ansible playbook, 
+we need to use the actual name without using the ansible keyword. 
+The gather_facts module from the Ansible playbook runs the setup module by default at the start of each 
+playbook to gather the facts about remote hosts
+
+9. what are the modules have you used?
 
 
+10. how ansible will works?
+static inventory
+
+11. what is static inventory and dynamic inventory?
 
 
+12. in my playbook number of tasks are there while running the second task is failure then my
+playbook will be execute others task or not?
+A) it won't
+ignore_error: yes
+13. i want ignore my failure task and run other task in playbook how to do this?
+A) 
+
+14. what is group_vars and host_vars
+What ever the variable is defined it effect only that particulr group
+host_vars is applicable for the all hosts
+
+[ec2-user@ip-172-31-40-139 ~]$ cat /etc/ansible/hosts
+[all:vars]
+ansible_user=ansi
+#ansible_ssh_private_key_file=/etc/ansible/jmspem.pem
+ansible_python_interpreter=/usr/bin/python3.7
+[server]
+172.31.40.139
+[node]
+172.31.46.50
+172.31.35.237
+
+
+15. what are playbook have you written?
+dbserver setup
+weblogic
+mysql
+radis
+postgres server setup
+load - nginx set up
+installation set up
+OS upgradtions
+linux patching
+mysql upgradation
+
+16. write sample playbook structure ?
+
+
+17. For what purposes you are using ansible in project
+start the service, same task we want to do multiple nodes
+
+18. How to troubleshoot ansible 
+-vvv - it will give more logs
+
+What is dry run - it will check the excute or not the playbook
+
+19. When you ping nodes & it says unreachable, how to troubleshoot?
+what is the error massage
+- password
+- public issue
+- key issue
+- user issue
+- password set up not done
+
+20. What is playbook,
+it is set of instructions
+roles are used to reusable purpose
+ansible-galaxy
+
+21. What all playbooks are you using in project,
+
+22. Write playbook for creating 100 users
+23. Ansible Tower
+REST API
+
+[root@ip-172-31-40-139 ~]# history
+    1  sudo amazon-linux-extras install ansible2
+    2  ansible --version
+    3  yum install ansible
+    4  cd /etc/ansible/
+    5  vi hosts
+    6  ansible -m ping all
+    7  ansible -m ping -u ec2-user all
+    8  vi jmspem.pem
+    9  ansible -m ping -u ec2-user --private-key=jmspem.pem all
+   10  ls
+   11  ll
+   12  chmod 400 jmspem.pem
+   13  ansible -m ping -u ec2-user --private-key=jmspem.pem all
+   14  vi hosts
+   15  ansible -m ping -all
+   16  ansible -m ping all
+   17  ls
+   18  ll
+   19  cd /etc/ansible/
+   20  ll
+   21  ansible -m ping all
+   22  ansible -m ping node
+   23  ansible -m ping server
+   24  vi hosts
+   25  ansible -m ping server
+   26  ansible -m ping all
+   27  vi hosts
+   28  ansible -m ping all
+   29  ansible -m ping node
+   30  ansible -m ping 'node:!172.31.46.50'
+   31  ansible -m ping node
+   32  pwd
+   33  vi hosts
+   34  cd
+   35  ansible -m ping node
+   36  cd /etc/ansible/
+   37  ansible -m ping node
+   38  ansible -m ping 'node:!172.31.35.237
+   39  ansible -m ping 'node:!172.31.35.237'
+   40  ansible -m setup server
+   41  $ ansible <node_ip/group> -m copy -a 'src=/path/of/the/file/hostmachine
+   42  echo "This is my first file" > madhu.txt
+   43  cat madhu.txt
+   44  pwd
+   45  ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user'
+   46  echo "This is sample text file" > sample.txt
+   47  ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user mode=400'
+   48  ansible node -m copy -a 'src=/etc/ansible/sample.txt dest=/home/ec2-user mode=400'
+   49  ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user'
+   50  ansible node -m copy -a 'src=/etc/ansible/madhu.txt dest=/home/ec2-user mode=777'
+   51  ansible node -m commad -a "df -kh"
+   52  ansible node -m command -a "df -kh"
+   53  ansible node -m command --become -a "ifconfig"
+   54  ansible node -m shell -a "df && free"
+   55  ansible node -m shell -a "ls -ltr"
+   56  ansible node -m file -a 'dest=/home/ec2-user/node.txt mode=600 owner=madhu group=madhu'
+   57  ansible node -m file -a 'dest=/home/ec2-user/node.txt'
+   58  ansible node -m file -a 'dest=/home/ec2-user/node.txt state=tpuch'
+   59  ansible node -m file -a 'dest=/home/ec2-user/node.txt state=touch'
+   60  ansible node -m shell -a "ls -ltr"
+   61  ansible node -m file -a 'dest=/home/ec2-user/weekend state=directory'
+   62  ansible node -m shell -a "ls -ltr"
+   63  ansible 192.168.141.215 -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy" '
+   64  ansible 192.168.141.215 -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy'
+   65  ansible 192.168.141.215 -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy"'
+   66  ansible node -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This notes written by madhu sudhan reddy"'
+   67  ansible node -m shell -a "cat node.txt"
+   68  ansible node -m lineinfile -a 'dest=/home/ec2-user/node.txt line="This is second line"'
+   69  ansible node -m shell -a "cat node.txt"
+   70  ansible node -m apt -a 'name=apache2 state=present'
+   71  ansible node -m yum -a 'name=apache2 state=present'
+   72  ansible node -m yum -a 'name=httpd state=present'
+   73  ansible node -m yum -a -become 'name=httpd state=present'
+   74  ansible node -m yum -a --become 'name=httpd state=present'
+   75  ansible node -m yum -a --become-user 'name=httpd state=present'
+   76  ansible node -m --become yum -a 'name=httpd state=present'
+   77  ansible node -m yum --become -a 'name=httpd state=present'
+   78  ansible node -m --become service -a 'name=httpd state=start'
+   79  ansible node -m service -a 'name=httpd state=start'
+   80  ansible node -m service -a 'name=httpd state=started'
+   81  ansible node -m service --become -a 'name=httpd state=started'
+   82  cd /etc/ansible/
+   83  vi create_file.yaml
+   84  ansible-playbook create_file.yaml
+   85  ansible-playbook create_file.yaml --check
+   86  vi create_file.yaml
+   87  ansible-playbook create_file.yaml --check
+   88  ansible-playbook create_file.yaml
+   89  vi create_file.yaml
+   90  ansible-playbook create_file.yaml --check
+   91  vi write_content_file.yaml
+   92  ansible-playbook write_content_file.yaml --syntax-check
+   93  vi write_content_file.yaml
+   94  ansible-playbook write_content_file.yaml --syntax-check
+   95  ansible-playbook write_content_file.yaml --check
+   96  ansible-playbook write_content_file.yaml
+   97  ansible node -m command -a "cat gani.txt"
+   98  ansible-playbook -vvv write_content_file.yaml
+   99  vi create_multiple_file.yaml
+  100  ansible-playbook create_multiple_file.yaml --check
+  101  vi create_multiple_file.yaml
+  102  ansible-playbook create_multiple_file.yaml --check
+  103  vi create_multiple_file.yaml
+  104  ansible-playbook create_multiple_file.yaml --syntax-check
+  105  vi create_multiple_file.yaml
+  106  ansible-playbook create_multiple_file.yaml --syntax-check
+  107  vi create_multiple_file.yaml
+  108  ansible-playbook create_multiple_file.yaml --syntax-check
+  109  vi create_multiple_file.yaml
+  110  ansible-playbook create_multiple_file.yaml --syntax-check
+  111  ansible-playbook create_multiple_file.yaml
+  112  vi create_multiple_file.yaml
+  113  ansible-playbook create_multiple_file.yaml
+  114  vi create_multiple_loop.yaml
+  115  ansible-playbook create_multiple_loop.yaml --syntax-check
+  116  ansible-playbook create_multiple_loop.yaml
+  117  vi create_multiple_loop.yaml
+  118  ansible-playbook create_multiple_loop.yaml --syntax-check
+  119  ansible-playbook create_multiple_loop.yaml
+  120  vi create_multiple_loop.yaml
+  121  ansible-playbook create_multiple_loop.yaml --syntax-check
+  122  ansible-playbook create_multiple_loop.yaml
+  123  cd /etc/ansible/
+  124  ls
+  125  vi install_maven.yaml
+  126  ansible-playbook install_maven.yaml --check
+  127  vi install_maven.yaml
+  128  ansible-playbook install_maven.yaml --check
+  129  vi install_maven.yaml
+  130  ansible-playbook install_maven.yaml --check
+  131  ansible-playbook install_maven.yaml
+  132  vi install_maven.yaml
+  133  ansible-playbook install_maven.yaml --check
+  134  vi install_maven.yaml
+  135  ansible-playbook install_maven.yaml --check
+  136  ansible-playbook install_maven.yaml
+  137  vi install_maven.yaml
+  138  ansible-playbook install_maven.yaml --check
+  139  ansible-playbook install_maven.yaml
+  140  vi install_maven.yaml
+  141  ansible-playbook install_maven.yaml --check
+  142  vi install_maven.yaml
+  143  ansible-playbook install_maven.yaml --check
+  144  ansible-playbook install_maven.yaml
+  145  ansible-galaxy init git
+  146  ls
+  147  ll
+  148  cd git/
+  149  ll
+  150  ls -ltr
+  151  tree
+  152  yum install tree
+  153  tree
+  154  cat handlers/
+  155  vi tasks/main.yml
+  156  ls
+  157  cd ..
+  158  ll
+  159  cat create_file.yaml
+  160  vi install_git.yaml
+  161  ansibl-playbook install_git.yaml --check
+  162  ansible-playbook install_git.yaml --check
+  163  vi install_git.yaml
+  164  ansible-playbook install_git.yaml --check
+  165  vi /etc/ansible/git/tasks/main.yml
+  166  ansible-playbook install_git.yaml --check
+  167  vi /etc/ansible/git/tasks/main.yml
+  168  ansible-playbook install_git.yaml --check
+  169  vi /etc/ansible/git/tasks/main.yml
+  170  ansible-playbook install_git.yaml --check
+  171  vi install_git.yaml
+  172  ansible-playbook install_git.yaml
+  173  git -version
+  174  git --version
+  175  git -V
+  176  git clone https://github.com/bgnanesh56/tomcat_latest.git
+  177  ll
+  178  cd tomcat_latest/
+  179  ll
+  180  cd tomcat/
+  181  ll
+  182  cat tasks/
+  183  cat tasks/main.yml
+  184  vi tasks/main.yml
+  185  ll
+  186  cd templates/
+  187  ll
+  188  cat tomcat-users.xml
+  189  cd ..
+  190  ll
+  191  cd ..
+  192  ll
+  193  cat tomcat_setup.yml
+  194  ansible-playbook tomcat_setup.yml
+  195  vi tomcat_setup.yml
+  196  ansible-playbook tomcat_setup.yml
+  197  wget http://mirror.reverse.net/pub/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
+  198  ls
+  199  cd tomcat/
+  200  ll
+  201  vi tasks/main.yml
+  202  cd ..
+  203  ll
+  204  ansible-playbook tomcat_setup.yml
+  205  cd ..
+  206  wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+  207  cd tomcat_latest/
+  208  ll
+  209  ansible-playbook tomcat_setup.yml
+  210  cd /etc/ansible/
+  211  ansible-playbook tomcat_setup.yml
+  212  cd tomcat_latest/
+  213  ansible-playbook tomcat_setup.yml cd
+  214  ansible-playbook tomcat_setup.yml
+  215  git --version
+  216  java --verson
+  217  java -verson
+  218  vi end_to_end_deploy.yaml
+  219  pwd
+  220  mv /etc/ansible/tomcat_latest/end_to_end_deploy.yaml /etc/ansible/
+  221  ll
+  222  cd ..
+  223  ls
+  224  ll
+  225  ansible-playbook end_to_end_deploy.yaml --syntax-check
+  226  vi end_to_end_deploy.yaml
+  227  ansible-playbook end_to_end_deploy.yaml --syntax-check
+  228  vi end_to_end_deploy.yaml
+  229  ansible-playbook end_to_end_deploy.yaml --syntax-check
+  230  vi end_to_end_deploy.yaml
+  231  ansible-playbook end_to_end_deploy.yaml --syntax-check
+  232  ansible-playbook end_to_end_deploy.yaml
+  233  cat end_to_end_deploy.yaml
+  234  ansible-vault create myfile.yml
+  235  ansible-playbook myfile.yml
+  236  ansible-playbook vault myfile.yml
+  237  ansible-playbook --ask-vault myfile.yml
+  238  vi mahesh.txt
+  239  ansible-vault encrypt mahesh.txt
+  240  cat mahesh.txt
+  241  ansible-vault view mahesh.txt
+  242  ansible-vault rekey mahesh.txt
+  243  ansible-vault decrypt mahesh.txt
+  244  cat ma
+  245  cat mahesh.txt
+  246  ansible-vault edit mahesh.txt
+  247  vi debug.yaml
+  248  ansible-playbook debug.yaml
+  249  cat /etc/os-release
+  250  ansible-galaxy init mail
+  251  cd mail/
+  252  ll
+  253  tree
+  254  vi vars/main.yml
+  255  cd vars/
+  256  ansible-vault encrypt main.yml
+  257  cat main.yml
+  258  cd ..
+  259  cd tasks/
+  260  ls
+  261  vi main.yml
+  262  ansible-playbook main.yml
+  263  vi main.yml
+  264  ansible-playbook main.yml
+  265  vi main.yml
+  266  ansible-playbook main.yml
+  267  cd ..
+  268  vi vault_example.yml
+  269  vi mail.yml
+  270  ansible-playbook mail.yml
+  271  cd mail/
+  272  ll
+  273  cd tasks/
+  274  vi main.yml
+  275  ansible-playbook --syntax-check main.yml
+  276  vi main.yml
+  277  cd ..
+  278  cd vars/
+  279  ls
+  280  vi main.yml
+  281  cd ..
+  282  cd tasks/
+  283  ansible-playbook --syntax-check main.yml
+  284  cd ..
+  285  cd vars/
+  286  vi main.yml
+  287  cd ..
+  288  ansible-playbook --syntax-check main.yml
+  289  ansible-playbook --syntax-check mail.yml
+  290  ll
+  291  cd ..
+  292  ll
+  293  cd mail/
+  294  ll
+  295  cd ..
+  296  ansible-playbook mail.yml
+  297  vi os.yaml
+  298  cd /etc/ansible/
+  299  ls
+  300  ll
+  301  vi os.yaml
+  302  ansible-playbook os.yaml --syntax-check
+  303  cd /etc/ansible/
+  304  vi install_nginx.yml
+  305  ansible-playbook install_nginx.yml
+  306  vi install_nginx.yml
+  307  vi index.html
+  308  ansible-playbook install_nginx.yml
+  309  vi index.html
+  310  ansible-playbook install_nginx.yml
+  311  git clone https://github.com/bgnanesh56/ansible-aws.git
+  312  ls
+  313  ll
+  314  cd ansible-aws/
+  315  ll
+  316  cd key/
+  317  tree
+  318  vi tasks/main.yml
+  319  cd ..
+  320  cat create_ec2_key_file.yml
+  321  vi create_ec2_key_file.yml
+  322  ls
+  323  ll
+  324  ansible-playbook create_ec2_key_file.yml
+  325  yum install pip -y
+  326  pip install boto3
+  327  pip install botocore
+  328  cd ..
+  329  vi hosts
+  330  whereis python
+  331  vi hosts
+  332  pip install boto3
+  333  yum install pip -y
+  334  pip install boto3
+  335  cd ansible-aws/
+  336  ansible-playbook create_ec2_key_file.yml
+  337  yum install python3
+  338  yum install python3-pip
+  339  pip install boto3
+  340  ansible-playbook create_ec2_key_file.yml
+  341  pip3 install botocore
+  342  ansible-playbook create_ec2_key_file.yml
+  343  vi create_ec2_key_file.yml
+  344  ansible-playbook create_ec2_key_file.yml
+  345  aws --version
+  346  pip install boto3
+  347  yum install python3
+  348  yum install python3 python3-pip
+  349  pip3 install botocore
+  350  pip3 install boto3
+  351  ansible-playbook create_ec2_key_file.yml
+  352  ll
+  353  cd ..
+  354  ls
+  355  ll
+  356  vi hosts
+  357  ansible -m ping all
+  358  vi hosts
+  359  useradd -d /home/ansi -m ansi
+  360  passwd ansi
+  361  passwd -x -1 ansi
+  362  sudo chown root:root /etc/sudoers
+  363  sudo chmod 0755 /etc/sudoers
+  364  vi /etc/sudoers
+
+---------------------------------------------------------------
+
+61. Monitoring_prometheus:
+==========================
 
 
 
