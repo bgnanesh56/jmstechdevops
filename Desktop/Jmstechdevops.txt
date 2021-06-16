@@ -4346,6 +4346,79 @@ REST API
 
 61. Monitoring_prometheus:
 ==========================
+application kibana RED and USE metrics
+RED - for application level
+USE - Hardware level
+
+Logging and Monitoring:
+-----------------------
+log4j2 appenders
+slf4j
+aspectj
+
+http request code - 401,404,502,200....
+
+storage is full
+RAM is full
+
+nagios
+zabbix
+ELK (Elastic search, logstash, kibana) --> file beat, heart beat
+grafana
+datadog
+cacti
+dynatrace
+promotheus
+solarwinds
+checkmk
+Icinga
+
+Commercial:
+-----------
+appdynamics
+newrelic
+splunk
+pagerduty
+
+promotheus - exporter
+CNCF(Cloud Native Computing Foundation)
+
+FUNCTIONS:
+==========
+https://prometheus.io/docs/prometheus/latest/querying/functions/
+
+
+MONITORING LINUX HOST METRICS WITH THE NODE EXPORTER:
+-----------------------------------------------------
+MONITORING LINUX HOST METRICS WITH THE NODE EXPORTER
+
+https://github.com/prometheus/node_exporter
+
+node Exporter -> is used for monitoring linux machine
+mysql 
+apache exporter
+docker 
+cAdvisor google
+
+UI not feasible
+
+Grafana:
+========
+cloudwatch
+Grafana Query language
+influxdb
+lnode
+promothesus
+Azure
+
+Jaeger
+-------
+install grafana-image-render plugin
+
+
+63. Kubernetes_introduction:
+============================
+gitops --> argocd helm k8s
 
 
 
