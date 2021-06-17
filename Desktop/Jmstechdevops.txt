@@ -4420,14 +4420,131 @@ install grafana-image-render plugin
 ============================
 gitops --> argocd helm k8s
 
+flutend
+kinesis
+
+eksctl
+
+k8s:
+====
+Desire state - at any cost 10 containers should run
+Cureent state
+
+doker --> docker-compose --> docker-swarm
+Orchestrate your container application
+
+k8s  --> CNCF  --> dashboard, multicontaner engine
+messos/marathon
+rancher
+docker swarm --> it support only docker container
+aws ecs --> fargate --> it is serverless container orchastration tool
+coreOS
+kuma
+Nomad
+openshift
+rkt
+
+k8s
+minikube --> it is running on the single machine (master/nodes)
+kubeadm (on premises)
+eks --> aws (console,eksctl,kops)
+gke --> google
+aks --> azure 
+digitalocean --> 
 
 
+k8s architecture:
+-----------------
+minion means slave in k8s
+
+Master
+======
+1. cluster store --> u want to run 10 replicas
+2. scheduler --> assigning the work like where the application should run
+3. controller manager --> nodes are unable to selfhealing how many are running... (etcd)- it is cluster store key value pair
+4. apiserver{} --> read the manifest data
+ kubelet --> 
+ 
+Node:
+====
+kubelet - watching for your node - contact controller manager in master
+    It then watches the API server for new work assignments. Any time it sees one, it carries out the task and maintains a reporting channel back to the master
+
+container engine - The Kubelet needs to work with a container runtime to do all the container management stuff –
+things like pulling images and starting and stopping containers.
+
+network proxy - managing load balacing - assing IP's to your pod
+
+pod - one application - insider pod one application will run - container
 
 
+64. Kubernetes_cluster_setup:
+=============================
+https://www.katacoda.com/courses/kubernetes/playground
+
+https://labs.play-with-docker.com/
+
+pod --> means application
+
+we can run mutiple containers in single pod
+in real time we will run only one container
+we will run mutiple containers for for supporting container
 
 
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+Check required ports
+Control-plane node(s)
+Protocol	Direction	Port Range	Purpose	Used By
+TCP	Inbound	6443*	Kubernetes API server	All
+TCP	Inbound	2379-2380	etcd server client API	kube-apiserver, etcd
+TCP	Inbound	10250	kubelet API	Self, Control plane
+TCP	Inbound	10251	kube-scheduler	Self
+TCP	Inbound	10252	kube-controller-manager	Self
+Worker node(s)
+Protocol	Direction	Port Range	Purpose	Used By
+TCP	Inbound	10250	kubelet API	Self, Control plane
+TCP	Inbound	30000-32767	NodePort Services†	All
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
+apt-get install -y docker.io
+
+sudo dpkg -i --force-overwrite /var/cache/apt/archives/kubernetes-cni_0.7.5-00_amd64.deb
+
+Q) what is kubectl and kubelet
+
+sudo apt-get install vim -y
+
+kubeadm init:
+------------
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.9.174:6443 --token g49rva.ar0vhstg5666rcp1 \
+        --discovery-token-ca-cert-hash sha256:121b0e933063dc07ebfefab538829d7599734ea521582c2b7cc92ff877892e5d
 
 
+kubectl get node
+
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8-sversion=$kubever"
+
+65. kubernetes_dashboard_pod:
+=============================
 
 
 
