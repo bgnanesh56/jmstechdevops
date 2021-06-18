@@ -4545,7 +4545,22 @@ kubectl apply -f "https://cloud.weave.works/k8s/net?k8-sversion=$kubever"
 
 65. kubernetes_dashboard_pod:
 =============================
+Q)how many service types are there
+A)culster IP, node port, load balancer  
+internal, node ip is for external, 
 
+node port range - 30000 to 36
+
+ubuntu@ip-172-31-9-174:~$ kubectl -n kubernetes-dashboard get service kubernetes-dashboard
+NAME                   TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE
+kubernetes-dashboard   NodePort   10.107.144.13   <none>        443:30898/TCP   7m15s
+
+https://atom.io/
+
+
+apiVersion in pod:
+-----------------
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/
 
 
 

@@ -135,3 +135,19 @@ Madhu Sudhan Reddy Y.B JMSTechHome +91-8884807341
  to: ballalallallal
  subject: Ansible-report
  body: veresion comparision "{{ ansible_distribution_version is version('7', '>=') }}"
+ 
+ 
+ ----------------
+ 
+ Data
+====
+token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IjRYZlpCV0VOZmM1Q1g0OVNNTDRfZERWNU5NRFhRU0pHbWZuakVlLV9QdUkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLW16bXdqIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiIxOTNlMjUyMS1jNDVjLTRiODUtODJkZi1lZGRhZTRlNjQyNDEiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.Jx3NGSpGBwxCkdzHJcMF3rFdoO0_V4SNbgqkeeXqoctvKlt4BAIj1-8ucTl574yL3bAE-jw-Je6n0rUo-KbbaGx2AKO701p-hsYY-fi2n_Xuv4lQt6fgta6kBxfQ_mjGzgpWCusRr9hwgKAqx_wLj5Oy41uNiyl9qaFmr4TiiZrLXUD01lAFsNLsgxT19pjaUUK6uqXgEXv3hhdvuGycLQBK7FxbA13MM_Uz-1_1UxvquMIb5wyQc-OBjKVADBCn-vZ3u187ya-zlvMTFVK_WSH2lfJkwlmF417_jPFptv7fjjT2yJbXORxHj_2R5apQ8k7LErxDjpdkENV4r69Mbg
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
