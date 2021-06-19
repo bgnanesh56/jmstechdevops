@@ -4563,10 +4563,62 @@ apiVersion in pod:
 https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.21/
 
 
+66. kubernetes_replicaset_service:
+==================================
+self-healing:
+-------------
+kubernetes replicaset used for self-healing
+
+k8s replicaset --> need to run always 3 containers
+
+If labels are same ==> if you delete and create it rs are same
+
+deployment --> replicaset --> pod
+
+"node selector" group and then we will 
+if you want to run spcific pod on specific node we will use "NODE SELECTOR"
+
+Labelsector:
+------------
+Service section labels and pod must have same lables
+May pod have more also. but it must have service section label
+
+Service types in K8S:
+=====================
+Cluster IP
+NodePort
+Loadbalancer
+External name
+
+
+kuma.io
+Ingress
 
 
 
+apiVersion: v1
+kind: Service
+metadata:
+ name: hello-svc
+ labels:
+ app: hello-world
+spec:
+ type: NodePort
+ ports:
+ - port: 8080
+ nodePort: 30001
+ protocol: TCP
+ selector:
+ app: hello-world 
+ 
+ 
+30000 - 32767
 
+MetalLB - To add loadbalancer
+
+
+67. Kubernetes_deployment:
+==========================
 
 
 
