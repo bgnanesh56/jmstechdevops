@@ -4619,11 +4619,59 @@ MetalLB - To add loadbalancer
 
 67. Kubernetes_deployment:
 ==========================
+pods
+replicaset
+deployment
+service (cluster IP)  --> Ingress
+namespace
+configmap
+secrets
+
+metallb
 
 
+deployment
+-----------
+rollback
+roling updates
+Max surge
+Min surge
 
+what is the monolethic
+what is microservice
+what type of deployment we have
 
+AWS App Mesh
 
+Interview quesiton
+------------------
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+
+kubectl set image deploy node-app-deploy node-web-app=ybmsr/nodejsapp:v2
+
+ImagepullBackoff
+ErrImagePull
+
+kubectl probs
+-------------
+liveness
+readiness  = These are healthchecks
+
+kubectl scale deployment node-app-deploy --replicas=4
+
+kubectl get po -o wide -l app=node-app
+
+68. Kubernetes_namespace:
+=========================
+namespace is cluster
+
+draw.io
+
+cluster --> namespace --> No.of pods
+
+kubectl get pods -n new-namespace
+
+Q)remove nodes from k8s cluster
 
 
 
