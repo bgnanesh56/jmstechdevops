@@ -4673,8 +4673,61 @@ kubectl get pods -n new-namespace
 
 Q)remove nodes from k8s cluster
 
+kubectl exec
+kubectl desctibe
+kubectl log
 
 
+69. Kubernetes_daemonset:
+=========================
+A daemon means to run anything in background
+
+5 pods --> 4 nodes
+
+I want to run a pod in particular node how to do this
+
+Node selector
+type of node
+
+How the auto scaling happen in node level:
+==========================================
+boot starp script --> autoscalling concepts --> 5 --> 5
+min and max nodes we will specify
+
+70. Kubernetes_job_cronjob:
+===========================
+kubernetes objects are compatable or not
+cronjobs - 
+proteous k8s
+
+trivy for docker scanning images
+https://github.com/aquasecurity/trivy
+
+Q) pull policy of kubernetes
+https://kubernetes.io/docs/concepts/containers/images/#:~:text=If%20you%20would%20like%20to,for%20the%20image%20to%20use.
+
+Updating images
+================
+When you first create a Deployment, StatefulSet, Pod, or other object that includes a Pod template, then by default the pull policy of all containers in that pod will be set to IfNotPresent if it is not explicitly specified. This policy causes the kubelet to skip pulling an image if it already exists.
+
+If you would like to always force a pull, you can do one of the following:
+
+set the imagePullPolicy of the container to Always.
+omit the imagePullPolicy and use :latest as the tag for the image to use; Kubernetes will set the policy to Always.
+omit the imagePullPolicy and the tag for the image to use.
+enable the AlwaysPullImages admission controller.
+
+
+statefullset
+configmap
+secretes
+liveness readiness probes
+
+ekctl
+helm2 vs helm3
+helm Ingress
+loadbalancer
+https with custom domain
 
 
 
