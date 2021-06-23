@@ -4730,11 +4730,67 @@ loadbalancer
 https with custom domain
 
 
+71. Kubernetes_service_loadbalancer_ingress:
+============================================
+Create a cluster with single command:
+-------------------------------------
+eksctl
+kubeadm
+kops
+
+Elastic Kubernetes Service (Amazon EKS) - Fully managed Kubernetes control plane
+Amazon Elastic Container Service (ECS)
+
+console
+sdks --> boto3
+cli
+ansible
+cloudformation in aws
+terraform in aws
+
+https://instances.vantage.sh/
+
+configmap --> env variables --> non-sensitive data -- (key,value base)
+secrets --> sensitive data
+end to end
+storage classes 
+volumes
 
 
+Argo CD - gitops
+
+statefullset
+service account = permission level
+network policies
+
+egress - outbound
+ingress - Inbound
 
 
+init container
+sidecar container
+kong --> Ingress controller
 
+Helm - is a package manager in k8s like yum,apt-get....
+
+tiller service was removed 
+
+Delete cluster of EKSCTL in aws:
+-------------------------------
+https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html
+kubectl get svc --all-namespaces
+kubectl delete svc <service-name>
+eksctl delete cluster --name <prod>
+
+
+72. Kubernetes_configmaps:
+==========================
+A ConfigMap is an API object used to store non-confidential data in key-value pairs. Pods can
+consume ConfigMaps as environment variables, command-line arguments, or as configuration files
+in a volume.
+
+
+Secrets --> key value pair data --> sensitive data (username, password, authentication token)
 
 
 
