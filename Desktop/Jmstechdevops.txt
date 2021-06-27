@@ -4812,6 +4812,14 @@ To use a secret, a pod needs to reference the secret. A secret can be used with 
 Secret max size is 1 mb
 secrete also key values pair.
 
+74. Kubernetes_ide_lens:
+========================
+kind kubernetes
+----------------
+https://kind.sigs.k8s.io/
+
+
+
 
 
 
