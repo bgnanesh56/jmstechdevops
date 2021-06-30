@@ -4819,7 +4819,86 @@ kind kubernetes
 https://kind.sigs.k8s.io/
 
 
+Kubernetes real- time interview questions
+=========================================
+1. how you do setup Kubernetes cluster
 
+2. what are the components in master node
+
+3. what are the component in slave
+
+4. what is pod
+5. what is replicaset object
+6. what is deployment object
+7. what is service object
+8. what is difference between deployment and service
+9. if pod exced memory what error will get
+10. what is namespace
+11. how to communicate from one namespace pod to another namespace pod
+12. what is init contianer
+13. what is difference between pod and container
+14. how many containers can ran i single pod
+15. what is secret object
+16. what is difference between secret vs configmaps
+17. what is daemonset
+18. what is scheduler
+19. how to run a pod on a particular node
+20. what is persistence volume and persistence volume claim
+21. what is ambassador container
+22. how many service types we have in Kubernetes
+23. what is default service type
+24. what is difference between ingress and load balancer
+25. how to schedule pod in Kubernetes
+26. how many masters are there in your cluster
+27. what is controller manager
+28. what is kubeproxy will do
+29. what is controller manager will do
+30. what is purpose of api server
+31. how to troubleshoot if pod is not running
+32. how to scale your pods though the command
+33. how to rollback previous version
+34. Kubernetes upgrade from one version to another version if certification will expire
+35. etcd back and restore how to create a new Kubernetes cluster
+36. recent issue in Kubernetes
+37. node affinity and pod affinity
+38. application has domain external communication how to validate your domain from ingress
+39. how do you know about in NACL
+40. pod security policy for your container
+41. how to add new nodes in cluster
+42. what is node port range
+43. what is difference between kubectl and kubelet
+44. what is use of kubelet.
+spinnaker
+helm chart
+argocd
+eks
+kops
+kubeadm
+EphemeralContainers
+aws
+---
+JMSTechHome https://jmstechhome.com 7989775914
+https://kubernetes.io/docs/concepts/services-networking/
+https://kubernetes.io/docs/reference/kubernetes-api/workloads-resources/pod-v1/
+https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/
+
+
+75. 
+
+
+Seed jobs and share library:
+============================
+seed jobs
+  share lib --> groovy
+  
+jenkinsfile
+
+seed job --> childs
+
+To implement share library, need to install a DSL plugin
+goto manage Jenkins → manage plugins → available → Job dsl → install without restart.
+
+https://github.com/ybmadhu/jenkins_shared_lib
 
 
 
