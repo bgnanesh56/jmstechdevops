@@ -220,3 +220,373 @@ spec:
         - containerPort: 8080
 
  
+ 
+ -------------------------------
+ 
+ apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: hello-deploy
+spec:
+ replicas: 10
+ selector:
+ matchLabels:
+ app: hello-world
+ template:
+ metadata:
+ labels:
+ app: hello-world
+ spec:
+ containers:
+ - name: hello-ctr
+ image: nigelpoulton/k8sbook:latest
+ ports:
+ - containerPort: 8080
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deploy
+  labels:
+     name: node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+  minReadySeconds: 10
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+       maxUnavailable: 1
+       maxSurge: 1
+  template:
+     metadata:
+       labels:
+         app: node-app
+     spec:
+      containers:
+      - name: node-web-app
+        image: ybmsr/nodejsapp:v1
+        ports:
+        - containerPort: 8080
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: configmap-example-pod
+spec:
+ containers:
+ - name: configmap-example-busybox
+ image: k8s.gcr.io/busybox
+ command: [ "/bin/sh", "-c", "env" ]
+ env:
+ - name: APPLICATION_TYPE
+ valueFrom:
+ configMapKeyRef:
+ name: application-configs
+ key: app.type
+ - name: APPLICATION_UI_TYPE
+ valueFrom:
+ configMapKeyRef:
+ name: application-configs
+ key: app.ui
+ - name: LOG_LEVEL
+ valueFrom:
+ configMapKeyRef:
+ name: application-log-configs
+ key: log_level
+ restartPolicy: Never
+
+-------------------------------
+
+version: '3'
+services:
+ web:
+    build: .
+    ports:
+     - "5000:5000"
+ redis:
+    image: "redis:alpine"
+
+
+version: '3'
+services:
+ web:
+ build: .
+ ports:
+ - "5000:5000"
+ volumes:
+ - .:/code
+ redis:
+ image: "redis:alpine"
+ 
+ 
+ ---------------------------------
+ 
+ import time
+import redis
+from flask import Flask
+app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
+def get_hit_count():
+ retries = 5
+ while True:
+ try:
+ return cache.incr('hits')
+ except redis.exceptions.ConnectionError as exc:
+ if retries == 0:
+ raise exc
+ retries -= 1
+ time.sleep(0.5)
+@app.route('/')
+def hello():
+ count = get_hit_count()
+ return 'Hello World! I have been seen {} times.\n'.format(count)
+if __name__ == "__main__":
+ app.run(host="0.0.0.0", debug=True)
+
+
+----------------------------------------
+
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
+
+curl 
+
+	sh  "curl -v -u admin:admin -T /var/lib/jenkins/workspace/pipeline-project/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war 'http://3.7.70.1:8080/manager/text/deploy?path=/springapp&update=true'"
+	
+	
+	
+    
+    --------------------------------------------------
+    
+ #!/bin/bash
+echo "enter the marks"
+read marks
+if [ $marks -eq 35 ];
+then
+echo "You passed"
+elif [ $marks -gt 60 ];
+then
+echo "You got first class"
+elif [ $marks -gt 75 ];
+then
+echo "You got distinction"
+else
+echo "Try next year..."
+if
+-----------------------
+
+
+
+------------------------
+
+[ec2-user@ip-172-31-10-164 devops]$ history
+    1  clear
+    2  ls -ltr
+    3  pwd
+    4  du
+    5  free
+    6  top
+    7  df
+    8  netstat
+    9  telnet
+   10  yum install telnet
+   11  sudo yum install telnet
+   12  telnet
+   13  w
+   14  fdisk
+   15  wc
+   16  uptime
+   17  man
+   18  lostat
+   19  iostat
+   20  vmstat
+   21  pwd
+   22  sudo -i
+   23  mkdir devops
+   24  ls
+   25  ls -l
+   26  man ls
+   27  whatis cp
+   28  whatis ls
+   29  whatis netsata
+   30  whatis netstat
+   31  cd devops/
+   32  ls
+   33  ls -ltr
+   34  mkdir course
+   35  cd cor
+   36  cd course/
+   37  pwd
+   38  mkdir -p madhucourse/linux
+   39  ls -ltr
+   40  cd madhucourse/
+   41  ls
+   42  cd ..
+   43  cd madhucourse/linux/
+   44  cd
+   45  cd -
+   46  cd ../..
+   47  pwd
+   48  cd
+   49  cd devops/
+   50  ls
+   51  touch sample.txt
+   52  ll
+   53  vi example.txt
+   54  ll
+   55  vi example.txt
+   56  ls -li
+   57  echo --> test1.txt
+   58  ls -ltr
+   59  echo "this is devops course"
+   60  echo $USER
+   61  env
+   62  env | grep -i user\
+   63  env | grep -i user
+   64  env | grep -i USER
+   65  env | grep USER
+   66  vi sample.txt
+   67  cat sample.txt
+   68  cat sample.txt | grep devops
+   69  cat sample.txt | grep -i devops
+   70  ifconfig
+   71  hostname
+   72  vi hostname
+   73  ifconfig | grep inet
+   74  ifconfig | grep -w inet
+   75  ifconfig | grep -w inet | awk 2
+   76  ifconfig | grep -w inet | awk '{print $1}'
+   77  ifconfig | grep -w inet | awk '{print $2}'
+   78  ifconfig | grep -w inet | awk '{print $3}'
+   79  ifconfig | grep -w inet | awk '{print $2}'
+   80  ifconfig | grep -w inet | awk '{print $2}' |wc
+   81  ifconfig | grep -w inet | awk '{print $2}' | wc -l
+   82  ifconfig | grep -w inet | awk '{print $2}' | wc -c
+   83  ifconfig | grep -w inet | awk '{print $2}' | wc -w
+   84  history
+
+
+----------------
+
+1. How to create zero size file
+a) Using touch command we can create zero size file
+2. What is the boot process in Linux? How many run levels are there? what is 0 to 6
+A) When the poweron the computer what are the back end processes were run to till open the login page
+https://www.thegeekstuff.com/2011/02/linux-boot-process/
+
+6 Stages of Linux Boot Process (Startup Sequence)
+by RAMESH NATARAJAN on FEBRUARY 7, 2011
+
+
+Press the power button on your system, and after few moments you see the Linux login prompt.
+
+Have you ever wondered what happens behind the scenes from the time you press the power button until the Linux login prompt appears?
+
+The following are the 6 high level stages of a typical Linux boot process.
+
+
+
+1. BIOS
+BIOS stands for Basic Input/Output System
+Performs some system integrity checks
+Searches, loads, and executes the boot loader program.
+It looks for boot loader in floppy, cd-rom, or hard drive. You can press a key (typically F12 of F2, but it depends on your system) during the BIOS startup to change the boot sequence.
+Once the boot loader program is detected and loaded into the memory, BIOS gives the control to it.
+So, in simple terms BIOS loads and executes the MBR boot loader.
+2. MBR
+MBR stands for Master Boot Record.
+It is located in the 1st sector of the bootable disk. Typically /dev/hda, or /dev/sda
+MBR is less than 512 bytes in size. This has three components 1) primary boot loader info in 1st 446 bytes 2) partition table info in next 64 bytes 3) mbr validation check in last 2 bytes.
+It contains information about GRUB (or LILO in old systems).
+So, in simple terms MBR loads and executes the GRUB boot loader.
+3. GRUB
+GRUB stands for Grand Unified Bootloader.
+If you have multiple kernel images installed on your system, you can choose which one to be executed.
+GRUB displays a splash screen, waits for few seconds, if you don’t enter anything, it loads the default kernel image as specified in the grub configuration file.
+GRUB has the knowledge of the filesystem (the older Linux loader LILO didn’t understand filesystem).
+Grub configuration file is /boot/grub/grub.conf (/etc/grub.conf is a link to this). The following is sample grub.conf of CentOS.
+#boot=/dev/sda
+default=0
+timeout=5
+splashimage=(hd0,0)/boot/grub/splash.xpm.gz
+hiddenmenu
+title CentOS (2.6.18-194.el5PAE)
+          root (hd0,0)
+          kernel /boot/vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/
+          initrd /boot/initrd-2.6.18-194.el5PAE.img
+As you notice from the above info, it contains kernel and initrd image.
+So, in simple terms GRUB just loads and executes Kernel and initrd images.
+4. Kernel
+Mounts the root file system as specified in the “root=” in grub.conf
+Kernel executes the /sbin/init program
+Since init was the 1st program to be executed by Linux Kernel, it has the process id (PID) of 1. Do a ‘ps -ef | grep init’ and check the pid.
+initrd stands for Initial RAM Disk.
+initrd is used by kernel as temporary root file system until kernel is booted and the real root file system is mounted. It also contains necessary drivers compiled inside, which helps it to access the hard drive partitions, and other hardware.
+5. Init
+Looks at the /etc/inittab file to decide the Linux run level.
+Following are the available run levels
+0 – halt
+1 – Single user mode
+2 – Multiuser, without NFS
+3 – Full multiuser mode
+4 – unused
+5 – X11
+6 – reboot
+Init identifies the default initlevel from /etc/inittab and uses that to load all appropriate program.
+Execute ‘grep initdefault /etc/inittab’ on your system to identify the default run level
+If you want to get into trouble, you can set the default run level to 0 or 6. Since you know what 0 and 6 means, probably you might not do that.
+Typically you would set the default run level to either 3 or 5.
+6. Runlevel programs
+When the Linux system is booting up, you might see various services getting started. For example, it might say “starting sendmail …. OK”. Those are the runlevel programs, executed from the run level directory as defined by your run level.
+Depending on your default init level setting, the system will execute the programs from one of the following directories.
+Run level 0 – /etc/rc.d/rc0.d/
+Run level 1 – /etc/rc.d/rc1.d/
+Run level 2 – /etc/rc.d/rc2.d/
+Run level 3 – /etc/rc.d/rc3.d/
+Run level 4 – /etc/rc.d/rc4.d/
+Run level 5 – /etc/rc.d/rc5.d/
+Run level 6 – /etc/rc.d/rc6.d/
+Please note that there are also symbolic links available for these directory under /etc directly. So, /etc/rc0.d is linked to /etc/rc.d/rc0.d.
+Under the /etc/rc.d/rc*.d/ directories, you would see programs that start with S and K.
+Programs starts with S are used during startup. S for startup.
+Programs starts with K are used during shutdown. K for kill.
+There are numbers right next to S and K in the program names. Those are the sequence number in which the programs should be started or killed.
+For example, S12syslog is to start the syslog deamon, which has the sequence number of 12. S80sendmail is to start the sendmail daemon, which has the sequence number of 80. So, syslog program will be started before sendmail.
+There you have it. That is what happens during the Linux boot process.
+
