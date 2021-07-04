@@ -4823,51 +4823,217 @@ Kubernetes real- time interview questions
 =========================================
 1. how you do setup Kubernetes cluster
 
+kubeadm
+eks - aws cli - terraform
+
 2. what are the components in master node
+
+scheduler - 
+controller-manager - it will provide cureent and state of cluster
+etcd - store all cluster information
+API server - we are providing manifest to api server
 
 3. what are the component in slave
 
+kube-proxy - assigning ip to all our pods - also loadbalancing internally
+kubectl - communication between master and node
+container engine
+
 4. what is pod
+
+pod is container we are running application in pod
+
 5. what is replicaset object
+
+how many replicapods you want, we can set up here
+
 6. what is deployment object
+
+it has the feaure of rollback and max and min surge
+
 7. what is service object
+
+if we want access application outside the k8s we use service object(access pods)
+nodeport
+clusterip
+loadbalancer
+ingress - clusterip internally
+
 8. what is difference between deployment and service
-9. if pod exced memory what error will get
+
+
+9. if pod exceed memory what error will get
+
+Kubernetes OOM kill due to limit overcommit
+clash to backup
+
 10. what is namespace
+
+It is virtual cluster, on physical cluster no.of virtual cluster are there on a particular project
+We can create two ways 1.yaml 2.command line
+
 11. how to communicate from one namespace pod to another namespace pod
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-y
+  namespace: namespace-a
+spec:
+  type: ExternalName
+  externalName: service-x.namespace-b.svc.cluster.local
+  ports:
+  - port: 80
+-------
+external with domain name
+
 12. what is init contianer
+
+To run a another container
+
 13. what is difference between pod and container
+
+container terminology for docker and pod terminology for k8s. Both run the applications
+
 14. how many containers can ran i single pod
+
+one pod for one application
+
 15. what is secret object
+
+To store the sensitive data
+
 16. what is difference between secret vs configmaps
+
+both have key value pairs
+
 17. what is daemonset
+
+it is a kind of service, it runs all nodes, kubeproxy
+
 18. what is scheduler
+
+cronjob kind
+
 19. how to run a pod on a particular node
+
+nodeselecter....
+
 20. what is persistence volume and persistence volume claim
+
+kind of docker volume statefullkind of services 
+stateless in realtime
+
 21. what is ambassador container
+
+it is kind of proxy
+
 22. how many service types we have in Kubernetes
+
+
 23. what is default service type
+
+clusterip
+
 24. what is difference between ingress and load balancer
+
+loadbalancer is using for service level
+ingress is using for cluster level it also a loadbalancer, it is path based one
+
 25. how to schedule pod in Kubernetes
+
+cronjob
+
 26. how many masters are there in your cluster
+
+
+
 27. what is controller manager
+
+if node down it will create
+
 28. what is kubeproxy will do
+
+it will assign ips
+
 29. what is controller manager will do
+
 30. what is purpose of api server
+
+handover the manifest
+
 31. how to troubleshoot if pod is not running
+
+desctibe command
+
 32. how to scale your pods though the command
+
+scale deployment
+
 33. how to rollback previous version
+
+
 34. Kubernetes upgrade from one version to another version if certification will expire
-35. etcd back and restore how to create a new Kubernetes cluster
+
+
+
+35. etcd backup and restore how to create a new Kubernetes cluster
+
+
+
 36. recent issue in Kubernetes
+
+healthchecks issue, upgradationtion
+
 37. node affinity and pod affinity
+
+
+
 38. application has domain external communication how to validate your domain from ingress
+
+
+
 39. how do you know about in NACL
+
+
+
 40. pod security policy for your container
+
+
+
 41. how to add new nodes in cluster
+
+join token
+
 42. what is node port range
+
+
+
 43. what is difference between kubectl and kubelet
+
+command line to manage k8s , roleback
+
 44. what is use of kubelet.
+
+it is kind of proxy, it is watcher
+
+
+45. How to restart a pod in prod
+46. how to restart all the pods in a prod cluster
+47. how to measure individual microservice SLA
+48. how to measure SLA for app which has many microservice
+49. what are the common issues in prod cluster you have seen between day 1 to 100 
+50. whar was the uptime SLA for k8s cluster and how were measuring the uptime for it
+51.explain what all happens when user issues kubectl deployment command
+52. who decides how many no.of pods needs to provisioned and new nodes to be provisioned based on spike in traffic
+
+
+-> memory, token issue
+
+
+
+
+
 spinnaker
 helm chart
 argocd
@@ -4885,8 +5051,14 @@ https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns/
 
 75. 
 
+75. Kubernetes_end_end_integration:
+===================================
+ansible or spinnaker or argocd (autosync)
 
-Seed jobs and share library:
+docker pipeline  - plugin
+
+
+75.1. Seed jobs and share library:
 ============================
 seed jobs
   share lib --> groovy
@@ -4900,13 +5072,22 @@ goto manage Jenkins → manage plugins → available → Job dsl → install wit
 
 https://github.com/ybmadhu/jenkins_shared_lib
 
+Amazon ECR credentials
 
+76. kubernetes_interview questions:
+------------------------------------
+helm --> templating
 
+100 -microservices
 
+package manager - 
+yum install
+apt install
+helm install .tar
+chartmuseum --> to store all helm chart
+using helm chart we can remove duplicate code
 
-
-
-
+https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
 
 
 
