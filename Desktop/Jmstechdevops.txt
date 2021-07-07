@@ -5130,6 +5130,48 @@ for certification - whizlabs aws
 https://www.whizlabs.com/aws-certifications/?utm_source=google&utm_medium=cpc&utm_campaign=ppc_brand_us&gclid=CjwKCAjw_o-HBhAsEiwANqYhp9_gToL98U-ygJJYknOZTHf8xgzJ8gEmRrxN6TbOCe4arLB1ppadzRoCj0IQAvD_BwE
 
 
+NodePort Service
+
+● NodePort services extend the
+ClusterIP service.
+● Exposes a port on every
+node’s IP.
+● Port can either be statically
+defined, or dynamically taken
+from a range between
+30000-32767.
+
+
+78. AWS_IAM:
+============
+IAM - Identity and Access Management (IAM)
+. Your whole AWS security is there:
+. Users
+. Groups
+. Roles aws service (aws ec2) --> another service cloudwatch
+. policies
+
+. Root account should never be used (and shared)
+. Users must be created with proper permissions
+. IAM is at the center of AWS
+
+s3 bucket policy generator:
+===========================
+https://awspolicygen.s3.amazonaws.com/policygen.html
+
+Multifactor Authentication
+
+Download Authy
+https://authy.com/download/
+
+create user --> policy (physical)
+Roles:
+------
+aws service --> aws service
+ec2 --> s3
+lamda --> ec2
+
+
 
 
 
