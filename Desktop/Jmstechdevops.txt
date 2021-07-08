@@ -5172,8 +5172,27 @@ ec2 --> s3
 lamda --> ec2
 
 
+79.1. AWS_s3_part1:
+===================
+s3 --> Simple Storage Service
+SQS ->
+rabitmq, kafka, activemq --> Queueing mechanism -> publish and subscribe method
 
+static web sites --> to store HTML, CSS
 
+it store data in KEY/VALUE object
+objects (files) buckets(direcotries)
+
+3 to 63 characters
+5 GB
+
+100 buckets we can store
+
+Q)how many storage classes are there in AWS
+https://aws.amazon.com/s3/storage-classes/
+
+Q) what is the difference between SSE-S3 and SSE-KMS
+SSE-S3 Three years it is permanent
 
 
 
