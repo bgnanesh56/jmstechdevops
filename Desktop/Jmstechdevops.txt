@@ -4818,6 +4818,280 @@ kind kubernetes
 ----------------
 https://kind.sigs.k8s.io/
 
+ubuntu@ip-172-31-9-174:~$ history
+    1  sudo apt-get update -y
+    2  sudo apt-get install -y apt-transport-https
+    3  sudo su -
+    4  cd
+    5  mkdir -p $HOME/.kube
+    6  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    7  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    8  kubectl get node
+    9  kubectl get pods --all-namespaces
+   10  sudo su -
+   11  cd
+   12  kubectl version
+   13  kubectl version | base 64
+   14  kubectl version | base64
+   15  kubectl version | base64 | tr -d '\n'
+   16  export kubever=$(kubectl version | base64 | tr -d '\n')
+   17  kubectl apply -f "https://cloud.weave.works/k8s/net?k8sversion=$kubever"
+   18  export kubever=$(kubectl version | base64 | tr -d '\n')
+   19  kubectl apply -f "https://cloud.weave.works/k8s/net?k8-sversion=$kubever"
+   20  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+   21  kubectl get nodes
+   22  kubectl get pods --all-namespaces
+   23  kubectl get nodes
+   24  cat .kube/config
+   25  kubectl pod --all -namespaces
+   26  kubectl --all -namespaces
+   27  kubectl get nodes
+   28  kubectl get pofd
+   29  kubectl get pods
+   30  kubectl get pods --all-namespaces
+   31  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0-beta4/aio/deploy/recommended.yaml
+   32  kubectl proxy &
+   33  kubectl get svc --all-namespaces
+   34  kubectl -n kubernetes-dashboard get service kubernetes-dashboard
+   35  kubectl -n kubernetes-dashboard edit service kubernetes-dashboard
+   36  kubectl -n kubernetes-dashboard get service kubernetes-dashboard
+   37  vi service_account.yaml
+   38  kubectl apply -f service_account.yaml
+   39  vi rolebinding.yaml
+   40  kubectl apply -f rolebinding.yaml
+   41  nohup kubectl proxy --address 0.0.0.0 --accept-hosts '.*' &
+   42  kubectl get pods
+   43  vi  pod.yml
+   44  ll
+   45  kubectl apply -f pod.yml
+   46  vi pos.yml
+   47  vi pod.yml
+   48  kubectl apply -f pod.yml
+   49  vi pod.yml
+   50  kubectl apply -f pod.yml
+   51  kubectl get pods
+   52  kubcestl describe pod pod.yml
+   53  kubectl describe pod pod.yml
+   54  kubectl logs hello-pod
+   55  kubectl describe pod hello-pod
+   56  kubectl logs hello-pod
+   57  kubectl get nodes
+   58  kubectl get pods
+   59  kubectl get pods -o wide
+   60  kubectl get pods -o json
+   61  kubectl get pods -o yaml
+   62  kubectl get pods
+   63  kubectl delete pod hello-pod
+   64  kubectl get pods
+   65  vi replicaset_ex.yaml
+   66  kubectl apply -f replicaset_ex.yaml
+   67  vi replicaset_ex.yaml
+   68  kubectl apply -f replicaset_ex.yaml
+   69  vi replicaset_ex.yaml
+   70  kubectl apply -f replicaset_ex.yaml
+   71  vi replicaset_ex.yaml
+   72  kubectl apply -f replicaset_ex.yaml
+   73  vi replicaset_ex.yaml
+   74  kubectl apply -f replicaset_ex.yaml
+   75  vi replicaset_ex.yaml
+   76  kubectl apply -f replicaset_ex.yaml
+   77  sudo apt-get update && sudo apt-get install yamllint -y
+   78  yamllint replicaset_ex.yaml
+   79  vi replicaset_ex.yaml
+   80  yamllint replicaset_ex.yaml
+   81  kubectl apply -f replicaset_ex.yaml
+   82  vi replicaset_ex.yaml
+   83  kubectl apply -f replicaset_ex.yaml
+   84  vi replicaset_ex.yaml
+   85  yamllint replicaset_ex.yaml
+   86  kubectl apply -f replicaset_ex.yaml
+   87  vi replicaset_ex.yaml
+   88  yamllint replicaset_ex.yaml
+   89  kubectl apply -f replicaset_ex.yaml
+   90  vi replicaset.yml
+   91  ll
+   92  kubectl get nodes
+   93  kubectl get -A
+   94  kubectl get all
+   95  kubectl delete replicaset.apps/hello-rs replicaset.apps/mynginx-7bf8c6db65
+   96  kubectl get all
+   97  kubectl delete deployment.apps/mynginx
+   98  kubectl get all
+   99  kubectl delete service/hello-svc service/kubernetes
+  100  kubectl get all
+  101  vi deploy.yml
+  102  kubectl apply -f deploy.yml
+  103  kubectl get deploy
+  104  kubectl get pods
+  105  kubectl describe deploy node-app-deploy
+  106  kubectl get deploy
+  107  kubectl delete node-app-deploy
+  108  kubectl delete deploy node-app-deploy
+  109  vi deploy.yml
+  110  kubectl get deploy
+  111  kubectl get pods
+  112  kubectl get rs
+  113  kubectl apply -f deploy.yml
+  114  vi deploy.yml
+  115  kubectl apply -f deploy.yml
+  116  vi deploy.yml
+  117  kubectl apply -f deploy.yml
+  118  kubectl get deploy
+  119  kubectl get all
+  120  kubectl describe deploy deployment.apps/node-app-deploy
+  121  kubectl describe deployment.apps/node-app-deploy
+  122  kubectl get pods -l app=node-app
+  123  kubectl get rs -l app=node-app
+  124  kubectl get deploy -l app=node-app
+  125  kubectl get deploy -l app=node-app-deploy
+  126  vi deploy.yml
+  127  kubectl set image deploy node-app-deploy node-web-app=ybmsr/nodejsapp:v2
+  128  kubectl rollout status deploy node-app-deploy
+  129  kubectl rollout status
+  130  kubectl describe deploy node-app-deploy | grep -i image
+  131  kubectl get pods
+  132  kubectl describe pods node-app-deploy-7978c68844-2w7xk
+  133  kubectl rollout history deployment node-app-deploy
+  134  kubectl rollout status deployment node-app-deploy
+  135  kubectl rollout history deployment node-app-deploy
+  136  kubectl describe pods node-app-deploy-7978c68844-2w7xk
+  137  kubectl get ns
+  138  kubectl get --all-ns
+  139  kubectl get --all-namespaces
+  140  kubectl get pod --all-namespaces
+  141  kubectl get ns
+  142  vi newNamespace.yml
+  143  kubectl apply -f newNamespace.yml
+  144  kubectl get ns
+  145  kubectl get pods -n ns
+  146  kubectl get pods -n test
+  147  kubectl run tutum --image=tutum/hello-world --namespace=new-namespace
+  148  kubectl get pods -n newNamespace.yml
+  149  kubectl get pods -n new-namespace
+  150  kubectl get rs -n new-namespace
+  151  kubectl get deploy -n new-namespace
+  152  vi mytutum.yml
+  153  kubectl apply -f mytutum.yml
+  154  vi mytutum.yml
+  155  kubectl apply -f mytutum.yml
+  156  kubectl get pods -n new-namespace
+  157  kubectl get pods -n test
+  158  kubectl config view | grep current-context
+  159  kubectl config view
+  160  kubectl config set-context --current --namespace=new-namespace
+  161  kubectl config view
+  162  kubectl get pods
+  163  kubectl run tutum --image=tutum/hello-world
+  164  kubectl config set-context --current --namespace=""
+  165  kubectl run tutum --image=tutum/hello-world
+  166  kubectl get pods
+  167  kubectl get svc -A
+  168  kubectl get pods
+  169  kubectl exec -it node-app-deploy-7978c68844-2w7xk /bin/bash
+  170  ll
+  171  kubectl get nodes
+  172  kubectl get ns
+  173  kubectl get pods
+  174  vi node_exporter_daemonset.yml
+  175  kubectl apply -f node_exporter_daemonset.yml
+  176  vi newNamespace.yml
+  177  kubectl apply -f node_exporter_daemonset.yml
+  178  vi node_exporter_daemonset.yml
+  179  kubectl apply -f node_exporter_daemonset.yml
+  180  vi node_exporter_daemonset.yml
+  181  vi newNamespace.yml
+  182  kubectl apply -f node_exporter_daemonset.yml
+  183  vi newNamespace.yml
+  184  vi node_exporter_daemonset.yml
+  185  kubectl apply -f node_exporter_daemonset.yml
+  186  ls
+  187  vi newNamespace.yml
+  188  kubectl apply -f node_exporter_daemonset.yml
+  189  kubectl apply -f newNamespace.yml
+  190  kubectl apply -f node_exporter_daemonset.yml
+  191  kubectl apply ns
+  192  kubectl get ns
+  193  kubectl get pods
+  194  kubectl get svc
+  195  kubectl get svc -A
+  196  kubectl edit deployment kubernetes-dashboard -n kubernetes-dashboard
+  197  kubectl get rs
+  198  vi job.yml
+  199  kubectl apply -f job.yml
+  200  vi job.yml
+  201  kubectl apply -f job.yml
+  202  vi job.yml
+  203  kubectl apply -f job.yml
+  204  vi job.yml
+  205  kubectl apply -f job.yml
+  206  vi job.yml
+  207  kubectl apply -f job.yml
+  208  kubectl get pods
+  209  kubectl get pods -o wide
+  210  kubectl get pods -o wide get-hostname
+  211  kubectl apply -f cronjob.yml
+  212  vi cronjob.yml
+  213  kubectl apply -f cronjob.yml
+  214  kubectl get pods
+  215  kubectl describe cronjob cronjob-example
+  216  kubectl get pods
+  217  kubectl get cronjob
+  218  kubectl get job
+  219  kubectl delete cronjob cronjob-example
+  220  kubectl delete job get-hostname
+  221  kubectl get pods
+  222  mkdir configmap-example
+  223  wget https://kubernetes.io/examples/configmap/game.properties -O configmapexample/game.properties
+  224  wget https://kubernetes.io/examples/configmap/game.properties -O configmap-example/game.properties
+  225  wget https://kubernetes.io/examples/configmap/ui.properties -O configmap-example/ui.properties
+  226  ls
+  227  ll
+  228  cd ..
+  229  cd
+  230  ls
+  231  cd configmap-example/
+  232  ll
+  233  pwd
+  234  cd
+  235  ll
+  236  cd configmap-example/
+  237  ll
+  238  cat game.properties
+  239  cat ui.properties
+  240  kubectl describe configmaps game-config-example
+  241  ls
+  242  kubectl get cm
+  243  kubectl create configmap game-config-example --from-file=configmap-example/
+  244  kubectl describe configmaps game-config-example
+  245  kubectl create configmap game-config-example --from-file=configmap-example/
+  246  kubectl describe configmaps game-config-example
+  247  kubectl get configmaps game-config-example -o yaml
+  248  wget https://kubernetes.io/examples/configmap/game.properties -O configmap-example/game.properties
+  249  history
+
+root@ip-172-31-9-174:~# history
+    1  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    2  | apt-key add -
+    3  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+    4  cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
+    5  deb http://apt.kubernetes.io/ kubernetes-xenial main
+    6  EOF
+    7  apt-get update
+    8  apt-get install -y docker.io
+    9  sudo usermod -a -G docker ubuntu
+   10  systemctl restart docker
+   11  systemctl enable docker.service
+   12  apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+   13  sudo apt-get install vim -y
+   14  vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+   15  kubeadm init
+   16  kubectl get node
+   17  exit
+   18  sysctl net.bridge.bridge-nf-call-iptables=1\
+   19  sysctl net.bridge.bridge-nf-call-iptables=1
+   20  su ubuntu
+   21  history
+
 
 Kubernetes real- time interview questions
 =========================================
@@ -5195,11 +5469,46 @@ Q) what is the difference between SSE-S3 and SSE-KMS
 SSE-S3 Three years it is permanent
 
 
+80. AWS_S3_part2_Cloudfront:
+============================
+s3 encryption
+s3 static website --> https --> cloudfront
+cloudfront
+cloudfront custom domain names integrate with cloudfront --> Route53
+
+SSE-S3 --> encryption, decryption both happened in server side --> keys managed by the AWS - 3 years - "AES256" algoritham
+SSE-KMS --> same as above --> AWS Key Management Service --> KMS advantages user control+audit trail -it is using "awskms" algorithm
+SSE-C --> encryption stored in client side --> When you want to manage your own encryption keys --> Data keys fully managed by the customer outside of AWS
+client side encryption  --> encryption, decryption both happened in client side
+
+S3 Encryption means always choose SSE-KMS- transition
 
 
+provisioning of aws resources:
+==============================
+console
+cloudformation
+aws cli
+sdks (software development kit)
+ java
+ python
+ ruby
+ nodejs
+ 
+ansible
+terraform
 
 
+Amazon Resource Name (ARN)
 
+Amazon CloudFront
+Fast, highly secure and programmable content delivery network (CDN)
+
+cache mechanism
+enable edge location
+Use all edge locations (best performance)
+
+Create invalidation - to remove cache memory from S3bucket
 
 
 
