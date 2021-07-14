@@ -5511,16 +5511,64 @@ Use all edge locations (best performance)
 Create invalidation - to remove cache memory from S3bucket
 
 
+81. AWS_loadbalancer:
+=====================
+Scalability & High Availability:
+================================
+Types of load balancer on AWS
+-----------------------------
+• AWS has 3 kinds of Load Balancers
+•    Classic Load Balancer (v1 - old generation) - 2009
+•    Application Load Balancer (v2 - new generation) - 2016
+•    Network Load Balancer (v2 - new generation) - 2017
+.    Gateway loadbalancer
+
+Q) In AWS where we will store the sensitive data?
+1. system manager - parameter store
+2. vault hashcrop
+3. Secrete manager
+
+
+82. AWS_autoscalling:
+=====================
+it comes under Horizantal scalbility
+
+launch template - is using for versioning - used for rollback also
+launch configuration - it does not have versioning
+
+PredefinedMetricType for auto scaling:
+======================================
+The metric type. The following predefined metrics are available:
+
+ASGAverageCPUUtilization - Average CPU utilization of the Auto Scaling group.
+
+ASGAverageNetworkIn - Average number of bytes received on all network interfaces by the Auto Scaling group.
+
+ASGAverageNetworkOut - Average number of bytes sent out on all network interfaces by the Auto Scaling group.
+
+ALBRequestCountPerTarget - Number of requests completed per target in an Application Load Balancer target group.
 
 
 
+Load balancing algorithm:
+=========================
+1. Round robin 
+2. Least outstanding requests
 
 
+SNS:
+====
+topic
+• Subscribers can be:
+•   SQS
+•   HTTP / HTTPS (with delivery retries – how many times)
+•   Lambda
+•   Emails
+•   SMS messages
+•   Mobile Notifications
 
-
-
-
-
+Simple Notification Service:
+============================
 
 
 
