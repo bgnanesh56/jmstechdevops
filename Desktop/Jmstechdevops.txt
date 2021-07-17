@@ -5571,7 +5571,25 @@ Simple Notification Service:
 ============================
 
 
+83. AWS_rds_elastick_beanstalk:
+================================
+ec2
+iam
+s3
+alb
+autoscalling
+SNS
+elastic beanstalk - platform as a service
+rds
+cloudwatch
 
+infrastructure as a service
+---
+platform as a service
+
+sql electron download
+-----
+https://www.softpedia.com/get/Internet/Servers/Database-Utils/Sqlectron.shtml
 
 
 
