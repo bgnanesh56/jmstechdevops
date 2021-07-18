@@ -590,3 +590,253 @@ There are numbers right next to S and K in the program names. Those are the sequ
 For example, S12syslog is to start the syslog deamon, which has the sequence number of 12. S80sendmail is to start the sendmail daemon, which has the sequence number of 80. So, syslog program will be started before sendmail.
 There you have it. That is what happens during the Linux boot process.
 
+ubuntu@ip-172-31-9-174:~$ cat application-defaults.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: application-configs
+ namespace: default
+data:
+ app.value: "45000"
+ app.type: test-application
+ app.ui: web
+
+
+---------------
+
+ubuntu@ip-172-31-9-174:~$ cat application-logs.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+ name: application-log-configs
+ namespace: default
+data:
+ log_level: WARNING
+ log_type: TEXT
+
+------------
+
+ubuntu@ip-172-31-9-174:~$ cat cronjob.yml
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob-example
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      completions: 4
+      parallelism: 2
+      template:
+         spec:
+           containers:
+           - name: hello
+             image: alpine:latest
+             command: ["/bin/sh", "-c"]
+             args: ["echo hello from $HOSTNAME!"]
+           restartPolicy: Never
+
+--------------------------
+
+ubuntu@ip-172-31-9-174:~$ cat deploy.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deploy
+  labels:
+     name: node-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+  minReadySeconds: 10
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+       maxUnavailable: 1
+       maxSurge: 1
+  template:
+     metadata:
+       labels:
+         app: node-app
+     spec:
+      containers:
+      - name: node-web-app
+        image: ybmsr/nodejsapp:v1
+        ports:
+        - containerPort: 8080
+
+--------------------
+
+ubuntu@ip-172-31-9-174:~$ cat example-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+   name: configmap-example-pod
+spec:
+  containers:
+   - name: configmap-example-busybox
+     image: k8s.gcr.io/busybox
+     command: [ "/bin/sh", "-c", "env" ]
+     env:
+       - name: APPLICATION_TYPE
+         valueFrom:
+            configMapKeyRef:
+                 name: application-configs
+                 key: app.type
+       - name: APPLICATION_UI_TYPE
+         valueFrom:
+            configMapKeyRef:
+                 name: application-configs
+                 key: app.ui
+       - name: LOG_LEVEL
+         valueFrom:
+             configMapKeyRef:
+                  name: application-log-configs
+                  key: log_level
+  restartPolicy: Never
+
+
+----------------------------------------------------
+
+ubuntu@ip-172-31-9-174:~$ cat job.yml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: get-hostname
+spec:
+  backoffLimit: 4
+  completions: 4
+  parallelism: 2
+  template:
+    spec:
+      containers:
+      - name: hostname
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        args: ["echo hello from $HOSTNAME!"]
+      restartPolicy: Never
+
+-----------------------
+
+ubuntu@ip-172-31-9-174:~$ cat newNamespace.yml
+apiVersion: v1
+kind: Namespace
+metadata:
+ name: monitoring
+
+-------------------
+
+ubuntu@ip-172-31-9-174:~$ cat node_exporter_daemonset.yml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: node-exporter
+  name: node-exporter
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+       app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+      - name: node-exporter
+        image: prom/node-exporter:v0.18.1
+        ports:
+        - containerPort: 9100
+          hostPort: 9100
+          protocol: TCP
+
+
+--------------------
+
+ubuntu@ip-172-31-9-174:~$ cat pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: hello-pod
+spec:
+ containers:
+ - name: hello-ctr
+   image: nigelpoulton/k8sbook:latest
+   ports:
+   - containerPort: 8080
+
+
+--------------------
+
+ubuntu@ip-172-31-9-174:~$ cat replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: hello-rs
+spec:
+ replicas: 5
+ selector:
+   matchLabels:
+       app: hello-world
+ template:
+   metadata:
+     labels:
+       app: hello-world
+   spec:
+     containers:
+     - name: hello-ctr
+       image: nigelpoulton/k8sbook:latest
+       ports:
+       - containerPort: 8080
+
+-----------------
+
+ubuntu@ip-172-31-9-174:~$ cat rolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kube-system
+
+
+---------------
+
+ubuntu@ip-172-31-9-174:~$ cat service_account.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kube-system
+
+
+----------------
+
+ubuntu@ip-172-31-9-174:~$ cat svc.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-svc
+  labels:
+    app: hello-world
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 30001
+    protocol: TCP
+  selector:
+    app: hello-world
+
+--------------------
