@@ -5591,9 +5591,25 @@ sql electron download
 -----
 https://www.softpedia.com/get/Internet/Servers/Database-Utils/Sqlectron.shtml
 
+RDS Read Replicas for read scalbility
+RDS - should have in multiple AZ for more availablity
 
+84. AWS_cloudwatch:
+===================
+it is logging and monitoring tool from AWS
 
+https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-custom-metrics/
 
+aws cloudwatch put-metric-data --metric-name danger --dimensions Instance=i-0c51f9f1213e63159  --namespace "Custom" --value $c
+    ----------------------------
+	
+https://askubuntu.com/questions/1097420/script-for-creating-users-on-new-servers
+
+Creating new users using shell script:
+=======================================
+
+Installing and running the CloudWatch agent on your servers
+------------------------------------------------------------
 
 
 
