@@ -5611,12 +5611,31 @@ Creating new users using shell script:
 Installing and running the CloudWatch agent on your servers
 ------------------------------------------------------------
 
+85. AWS_Route53:
+================
+run app --> ip --> mainly set up for domain name
+iot devices has the ipv6 - that time we will use -- AAAA
+Domin to domain maping/alias -- CNAME
+jms.com it root domain --
+ first.jms.com --> second.jms.com(alb url, cloudfront url)
+
+I have one application in (legacy system(on premises) )
+
+ec2 --> ansible(deployed using this) --> old domain --> alb
+now it is running k8s --> 
+
+weighted routing policy --> send percentage wise
+
+app.mycomp.com --> onenew.compnay.com
 
 
+jms.com --> hostzone --> no.of records
+route53
+cloudflare
 
-
-
-
+freenom
+namecheap
+csr java - to create ssl certificate
    
 
 
