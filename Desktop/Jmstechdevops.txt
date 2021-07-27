@@ -5639,6 +5639,109 @@ csr java - to create ssl certificate
    
 
 
+86. AWS_VPC_part1_PublicVPC:
+============================
+CIDR - (Classless Inter-Domain Routing)
+
+https://www.ipaddressguide.com/cidr
+
+5 IPS AWS taken back
+
+One Internet gateway for one VPC
+
+
+87. AWS_PrivateVPC:
+===================
+Bastion host
+jump server
+jump box
+
+Q)diff nat instance vs nat gateway
+nat instance is depricated one
+
+AWS Transit Gateway:
+--------------------
+AWS Transit Gateway connects VPCs and on-premises networks through a central hub. 
+This simplifies your network and puts an end to complex peering relationships. 
+It acts as a cloud router – each new connection is only made once.
+
+Q) what is diff between security group vs nacl
+
+NACL - one more layer for security for your instances - subnet level
+
+
+How to remove particular one in ECR repo in aws\
+
+Lifecycle policy
+
+
+88. AWS_ecr_ecs_fargate:
+========================
+ecr - is the docker registry - store docker images 
+ecs
+
+aws s3 ls --profile=jenkins
+
+ecs: Elastic Container service
+----
+ec2 base
+fargate base
+
+lb 
+
+
+db
+elastic cache --> redis
+
+ecs farget is server less
+ cpu
+ ram
+
+
+89. AWS_cli:
+============
+ansible
+aws console
+aws cli
+aws cloudformation
+terraform
+boto - sdks
+
+ami-00bf4ae5a7909786c
+t2.micro
+vpc-770af11c
+subnet-2b396867
+jmspem
+sg-0d9933f8de94d1fc2
+
+$ aws ec2 run-instances --image-id ami-00bf4ae5a7909786c --count 1 --instance-type t2.micro --key-name jmspem --security-group-ids sg-0d9933f8de94d1fc2 --subnet-id subnet-2b396867
+
+difference of copy and sync in aws cli relating to s3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
